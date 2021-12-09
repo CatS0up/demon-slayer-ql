@@ -6,7 +6,7 @@ WORKDIR /var/www/html/
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libpng-dev \
+    libpq-dev \
     zip \
     vim \
     git \
