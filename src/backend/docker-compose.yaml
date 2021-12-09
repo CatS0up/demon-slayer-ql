@@ -17,6 +17,22 @@ services:
     networks:
       - app-network
 
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=${DB_DATABASE}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - app-network
+
   frontend:
     stdin_open: true
     container_name: client
@@ -33,6 +49,7 @@ services:
     depends_on:
       - backend
       - client
+      - pgsql
     build:
       context: ./nginx
       dockerfile: Dockerfile
@@ -46,4 +63,5 @@ services:
 
 networks:
   app-network:
-    driver: bridge
+volumes:
+  postgres_data:
