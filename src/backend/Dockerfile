@@ -19,9 +19,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 COPY . /var/www/html
 
-RUN chown -R www-data:www-data \
-    /var/www/html/storage \
-    /var/www/html/bootstrap/cache
+RUN groupadd --gid 1000 --system appuser \
+    && useradd --uid 1000 -g appuser \
+    -G www-data,root --shell /bin/bash \
+    --create-home appuser
+
+USER appuser
 
 EXPOSE 9000
 CMD ["php-fpm"]
