@@ -10,17 +10,22 @@ use Illuminate\Support\Str;
 trait HasUniqueIdentifier
 {
 
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+    public function getKeyType()
+    {
+        return 'string';
+    }
+
     public static function boot()
     {
 
         parent::boot();
 
         static::creating(function (Model $model) {
-
-            $model->setKeyType('string');
-
-            $model->setIncrementing(false);
-
             $model->setAttribute($model->getKeyName(), Str::uuid());
         });
     }
