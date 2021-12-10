@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Traits;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+trait HasUniqueIdentifier
+{
+
+    public static function boot()
+    {
+
+        parent::boot();
+
+        static::creating(function (Model $model) {
+
+            $model->setKeyType('string');
+
+            $model->setIncrementing(false);
+
+            $model->setAttribute($model->getKeyName(), Str::uuid());
+        });
+    }
+}
