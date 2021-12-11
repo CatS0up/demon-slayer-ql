@@ -16,9 +16,9 @@ class CreateAffiliationsTable extends Migration
         Schema::create('affiliations', function (Blueprint $table) {
             $table->uuid('uuid');
             $table->primary('uuid');
-            $table->foreignUuid('parent_uuid')->nullable()->constrained('affiliations', 'uuid');
+            $table->foreignUuid('parentUuid')->nullable()->constrained('affiliations', 'uuid');
             $table->string('name');
-            $table->text('short_description');
+            $table->text('description');
         });
     }
 

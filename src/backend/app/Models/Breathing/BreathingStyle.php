@@ -17,12 +17,12 @@ class BreathingStyle extends Model
 
     public function subStyles(): HasMany
     {
-        return $this->hasMany(BreathingStyle::class, 'parent_uuid', 'uuid')
+        return $this->hasMany(BreathingStyle::class, 'parentUuid', 'uuid')
             ->with('subStyles.subStyles');
     }
 
     public function techniques(): HasMany
     {
-        return $this->hasMany(BreathingStyleTechnique::class, 'breathing_style_uuid');
+        return $this->hasMany(BreathingStyleTechnique::class, 'breathingStyleUuid');
     }
 }

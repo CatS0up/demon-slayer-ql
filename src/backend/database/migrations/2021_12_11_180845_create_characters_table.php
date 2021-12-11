@@ -16,15 +16,15 @@ class CreateCharactersTable extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->uuid('uuid');
             $table->primary('uuid');
-            $table->foreignUuid('affiliation_uuid')->constrained('affiliations', 'uuid');
+            $table->foreignUuid('affiliationUuid')->constrained('affiliations', 'uuid');
             $table->string('name');
-            $table->text('short_description');
-            $table->foreignUuid('breathing_style_uuid')->nullable()->constrained('breathing_styles', 'uuid');
-            $table->string('anime_avatar')->nullable();
-            $table->string('manga_avatar')->nullable();
+            $table->text('description');
+            $table->foreignUuid('breathingStyleUuid')->nullable()->constrained('breathing_styles', 'uuid');
+            $table->string('animeAvatar')->nullable();
+            $table->string('mangaAvatar')->nullable();
             $table->tinyInteger('age')->nullable();
-            $table->string('first_anime_apperance')->nullable();
-            $table->string('first_manga_apperance')->nullable();
+            $table->string('firstAnimeApperance')->nullable();
+            $table->string('firstMangaApperance')->nullable();
         });
     }
 

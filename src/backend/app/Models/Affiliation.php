@@ -17,6 +17,6 @@ class Affiliation extends Model
 
     public function subAffilations(): HasMany
     {
-        return $this->hasMany(Affiliation::class, 'parent_uuid', 'uuid');
+        return $this->hasMany(Affiliation::class, 'parentUuid', 'uuid');
     }
 }
