@@ -14,9 +14,9 @@ class CreateBreathingStyleTechniquesTable extends Migration
     public function up()
     {
         Schema::create('breathing_style_techniques', function (Blueprint $table) {
-            $table->uuid('uuid');
-            $table->primary('uuid');
-            $table->foreignUuid('breathingStyleUuid')->nullable()->constrained('breathing_styles', 'uuid');
+            $table->uuid('_id');
+            $table->primary('_id');
+            $table->foreignUuid('_breathingStyleId')->nullable()->constrained('breathing_styles', '_id');
             $table->string('name');
         });
     }

@@ -15,13 +15,13 @@ class CharacterSeeder extends Seeder
      */
     public function run()
     {
-        $affiliations = Affiliation::select('name', 'uuid')->get();
+        $affiliations = Affiliation::select('name', '_id')->get();
 
         $characters = [
             // Ubuyashiki Family
             [
-                'affiliationUuid'     => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
-                'breathingStyleUuid'  => null,
+                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
+                '_breathingStyleId'   => null,
                 'name'                => 'Kagaya Ubuyashiki',
                 'age'                 => 23,
                 'firstAnimeApperance' => 'Episode 15',
@@ -31,8 +31,8 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                'affiliationUuid'     => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
-                'breathingStyleUuid'  => null,
+                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
+                '_breathingStyleId'   => null,
                 'name'                => 'Amane Ubuyashiki',
                 'age'                 => 27,
                 'firstAnimeApperance' => 'Kimetsu no Yaiba: The Movie - Mugen Train',
@@ -42,8 +42,8 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                'affiliationUuid'     => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
-                'breathingStyleUuid'  => null,
+                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
+                '_breathingStyleId'   => null,
                 'name'                => 'Amane Ubuyashiki',
                 'age'                 => 27,
                 'firstAnimeApperance' => 'Kimetsu no Yaiba: The Movie - Mugen Train',
@@ -53,8 +53,8 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                'affiliationUuid'     => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
-                'breathingStyleUuid'  => null,
+                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
+                '_breathingStyleId'   => null,
                 'name'                => 'Hinaki Ubuyashiki',
                 'age'                 => 9,
                 'firstAnimeApperance' => 'Episode 15',
@@ -64,8 +64,8 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                'affiliationUuid'     => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
-                'breathingStyleUuid'  => null,
+                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
+                '_breathingStyleId'   => null,
                 'name'                => 'Nichika Ubuyashiki',
                 'age'                 => 8,
                 'firstAnimeApperance' => 'Episode 15',
@@ -75,8 +75,8 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                'affiliationUuid'     => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
-                'breathingStyleUuid'  => null,
+                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
+                '_breathingStyleId'   => null,
                 'name'                => 'Nichika Ubuyashiki',
                 'age'                 => 8,
                 'firstAnimeApperance' => 'Episode 15',

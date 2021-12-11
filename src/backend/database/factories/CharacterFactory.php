@@ -15,8 +15,8 @@ class CharacterFactory extends Factory
     public function definition()
     {
         return [
-            'affilation_uuid'       => Affiliation::factory()->create()->uuid,
-            'breathing_style_uuid'  => $this->faker->randomElement([null, AffiliationFactory::factory()->create()->uuid]),
+            '_affilationId'         => Affiliation::factory()->create()->uuid,
+            '_breathingStyleId'     => $this->faker->randomElement([null, AffiliationFactory::factory()->create()->uuid]),
             'name'                  => $this->faker->firstName(),
             'age'                   => $this->faker->randomNumber(),
             'first_anime_apperance' => $this->faker->word(),

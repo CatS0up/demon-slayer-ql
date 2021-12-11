@@ -14,12 +14,12 @@ class CreateCharactersTable extends Migration
     public function up()
     {
         Schema::create('characters', function (Blueprint $table) {
-            $table->uuid('uuid');
-            $table->primary('uuid');
-            $table->foreignUuid('affiliationUuid')->constrained('affiliations', 'uuid');
+            $table->uuid('_id');
+            $table->primary('_id');
+            $table->foreignUuid('_affiliationId')->constrained('affiliations', '_id');
             $table->string('name');
             $table->text('description');
-            $table->foreignUuid('breathingStyleUuid')->nullable()->constrained('breathing_styles', 'uuid');
+            $table->foreignUuid('_breathingStyleId')->nullable()->constrained('breathing_styles', '_id');
             $table->string('animeAvatar')->nullable();
             $table->string('mangaAvatar')->nullable();
             $table->tinyInteger('age')->nullable();

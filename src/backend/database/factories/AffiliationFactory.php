@@ -14,12 +14,12 @@ class AffiliationFactory extends Factory
     public function definition()
     {
         return [
-            'parent_uuid' => $this->faker->randomElement([
+            '_parentId' => $this->faker->randomElement([
                 null,
                 AffiliationFactory::factory()->create()->uuid
             ]),
-            'name'              => $this->faker->word(),
-            'short_description' => $this->faker->sentence('50')
+            'name'        => $this->faker->word(),
+            'description' => $this->faker->sentence(50)
         ];
     }
 }

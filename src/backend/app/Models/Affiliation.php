@@ -11,12 +11,12 @@ class Affiliation extends Model
 {
     use HasFactory, HasUniqueIdentifier;
 
-    public $primaryKey = 'uuid';
+    public $primaryKey = '_id';
 
     public $timestamps = false;
 
     public function subAffilations(): HasMany
     {
-        return $this->hasMany(Affiliation::class, 'parentUuid', 'uuid');
+        return $this->hasMany(Affiliation::class, '_parentId', '_id');
     }
 }

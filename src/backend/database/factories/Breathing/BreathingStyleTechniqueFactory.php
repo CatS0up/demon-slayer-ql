@@ -14,8 +14,8 @@ class BreathingStyleTechniqueFactory extends Factory
     public function definition()
     {
         return [
-            'breathing_style_uuid' => BreathingStyleFactory::factory()->create()->uuid,
-            'name'                 => $this->faker->word()
+            '_breathingStyleId' => BreathingStyleFactory::factory()->create()->uuid,
+            'name'              => $this->faker->word()
         ];
     }
 }

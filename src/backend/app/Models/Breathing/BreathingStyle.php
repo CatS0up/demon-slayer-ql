@@ -11,18 +11,18 @@ class BreathingStyle extends Model
 {
     use HasFactory, HasUniqueIdentifier;
 
-    public $primaryKey = 'uuid';
+    public $primaryKey = '_id';
 
     public $timestamps = false;
 
     public function subStyles(): HasMany
     {
-        return $this->hasMany(BreathingStyle::class, 'parentUuid', 'uuid')
+        return $this->hasMany(BreathingStyle::class, '_parentId', '_id')
             ->with('subStyles.subStyles');
     }
 
     public function techniques(): HasMany
     {
-        return $this->hasMany(BreathingStyleTechnique::class, 'breathingStyleUuid');
+        return $this->hasMany(BreathingStyleTechnique::class, '_breathingStyleId');
     }
 }

@@ -10,7 +10,7 @@ class Character extends Model
 {
     use HasFactory, HasUniqueIdentifier;
 
-    public $primaryKey = 'uuid';
+    public $primaryKey = '_id';
 
     public $timestamps = false;
 }

@@ -15,11 +15,11 @@ class BreathingStyleFactory extends Factory
     public function definition()
     {
         return [
-            'parent_uuid' => $this->faker->randomElement([
+            '_parentId' => $this->faker->randomElement([
                 null,
                 BreathingStyleFactory::factory()->create()->uuid
             ]),
-            'name'        => $this->faker->word()
+            'name' => $this->faker->word()
         ];
     }
 }
