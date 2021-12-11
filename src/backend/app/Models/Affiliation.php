@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Affilation extends Model
+class Affiliation extends Model
 {
     use HasFactory, HasUniqueIdentifier;
 
@@ -17,6 +17,6 @@ class Affilation extends Model
 
     public function subAffilations(): HasMany
     {
-        return $this->hasMany(Affilation::class, 'parent_uuid', 'uuid');
+        return $this->hasMany(Affiliation::class, 'parent_uuid', 'uuid');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Affilation;
+use App\Models\Affiliation;
 use App\Models\Character;
 use Illuminate\Database\Seeder;
 
@@ -15,12 +15,12 @@ class CharacterSeeder extends Seeder
      */
     public function run()
     {
-        $affilations = Affilation::select('name', 'uuid')->get();
+        $affiliations = Affiliation::select('name', 'uuid')->get();
 
         $characters = [
             // Ubuyashiki Family
             [
-                'affilation_uuid'       => $affilations->firstWhere('name', 'Ubuyashiki Family')->uuid,
+                'affiliation_uuid'       => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
                 'breathing_style_uuid'  => null,
                 'name'                  => 'Kagaya Ubuyashiki',
                 'age'                   => 23,
@@ -31,7 +31,7 @@ class CharacterSeeder extends Seeder
                 'manga_avatar'          => null,
             ],
             [
-                'affilation_uuid'       => $affilations->firstWhere('name', 'Ubuyashiki Family')->uuid,
+                'affiliation_uuid'       => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
                 'breathing_style_uuid'  => null,
                 'name'                  => 'Amane Ubuyashiki',
                 'age'                   => 27,
@@ -42,7 +42,7 @@ class CharacterSeeder extends Seeder
                 'manga_avatar'          => null,
             ],
             [
-                'affilation_uuid'       => $affilations->firstWhere('name', 'Ubuyashiki Family')->uuid,
+                'affiliation_uuid'       => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
                 'breathing_style_uuid'  => null,
                 'name'                  => 'Amane Ubuyashiki',
                 'age'                   => 27,
@@ -53,7 +53,7 @@ class CharacterSeeder extends Seeder
                 'manga_avatar'          => null,
             ],
             [
-                'affilation_uuid'       => $affilations->firstWhere('name', 'Ubuyashiki Family')->uuid,
+                'affiliation_uuid'       => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
                 'breathing_style_uuid'  => null,
                 'name'                  => 'Hinaki Ubuyashiki',
                 'age'                   => 9,
@@ -64,7 +64,7 @@ class CharacterSeeder extends Seeder
                 'manga_avatar'          => null,
             ],
             [
-                'affilation_uuid'       => $affilations->firstWhere('name', 'Ubuyashiki Family')->uuid,
+                'affiliation_uuid'       => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
                 'breathing_style_uuid'  => null,
                 'name'                  => 'Nichika Ubuyashiki',
                 'age'                   => 8,
@@ -75,7 +75,7 @@ class CharacterSeeder extends Seeder
                 'manga_avatar'          => null,
             ],
             [
-                'affilation_uuid'       => $affilations->firstWhere('name', 'Ubuyashiki Family')->uuid,
+                'affiliation_uuid'       => $affiliations->firstWhere('name', 'Ubuyashiki Family')->uuid,
                 'breathing_style_uuid'  => null,
                 'name'                  => 'Nichika Ubuyashiki',
                 'age'                   => 8,

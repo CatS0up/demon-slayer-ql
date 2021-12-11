@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(BreathingStyleSeeder::class);
-        $this->call(AffilationSeeder::class);
+        $this->call(AffiliationSeeder::class);
         $this->call(CharacterSeeder::class);
     }
 }

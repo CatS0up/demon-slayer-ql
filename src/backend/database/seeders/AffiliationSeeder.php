@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Affilation;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Affiliation;
 use Illuminate\Database\Seeder;
 
-class AffilationSeeder extends Seeder
+class AffiliationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -88,7 +87,7 @@ class AffilationSeeder extends Seeder
     private function createAffilationsStructure(array $affilations): void
     {
         foreach ($affilations as $affilation) {
-            $model = Affilation::create([
+            $model = Affiliation::create([
                 'name'              => $affilation['name'],
                 'short_description' => $affilation['short_description']
             ]);

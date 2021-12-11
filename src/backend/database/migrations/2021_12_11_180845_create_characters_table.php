@@ -16,7 +16,7 @@ class CreateCharactersTable extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->uuid('uuid');
             $table->primary('uuid');
-            $table->foreignUuid('affilation_uuid')->constrained('affilations', 'uuid');
+            $table->foreignUuid('affiliation_uuid')->constrained('affiliations', 'uuid');
             $table->string('name');
             $table->text('short_description');
             $table->foreignUuid('breathing_style_uuid')->nullable()->constrained('breathing_styles', 'uuid');

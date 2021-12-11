@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAffilationsTable extends Migration
+class CreateAffiliationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAffilationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('affilations', function (Blueprint $table) {
+        Schema::create('affiliations', function (Blueprint $table) {
             $table->uuid('uuid');
             $table->primary('uuid');
-            $table->foreignUuid('parent_uuid')->nullable()->constrained('affilations', 'uuid');
+            $table->foreignUuid('parent_uuid')->nullable()->constrained('affiliations', 'uuid');
             $table->string('name');
             $table->text('short_description');
         });

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Affilation;
+use App\Models\Affiliation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CharacterFactory extends Factory
@@ -15,8 +15,8 @@ class CharacterFactory extends Factory
     public function definition()
     {
         return [
-            'affilation_uuid'       => Affilation::factory()->create()->uuid,
-            'breathing_style_uuid'  => $this->faker->randomElement([null, AffilationFactory::factory()->create()->uuid]),
+            'affilation_uuid'       => Affiliation::factory()->create()->uuid,
+            'breathing_style_uuid'  => $this->faker->randomElement([null, AffiliationFactory::factory()->create()->uuid]),
             'name'                  => $this->faker->firstName(),
             'age'                   => $this->faker->randomNumber(),
             'first_anime_apperance' => $this->faker->word(),
