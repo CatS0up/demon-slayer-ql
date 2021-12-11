@@ -1,0 +1,10 @@
+type Affiliation {
+    _id: ID!
+    name: String!
+    mainAffilation: Affiliation @belongsTo
+}
+
+extend type Query {
+    affiliations: [Affiliation!]! @all
+    affiliation:(_id: ID @eq): Affiliation @find
+}

@@ -1,0 +1,10 @@
+type BreathingStyleTechnique {
+    ID: ID!
+    name: String!
+    style: BreathingStyle @belongsTo
+}
+
+extend type Query {
+    breathingStyleTechniques: [BreathingStyleTechnique!]! @all
+    breathingStyleTechnique:(_id: ID @eq): BreathingStyleTechnique @find
+}
