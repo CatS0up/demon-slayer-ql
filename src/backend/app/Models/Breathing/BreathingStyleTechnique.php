@@ -5,6 +5,7 @@ namespace App\Models\Breathing;
 use App\Traits\HasUniqueIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BreathingStyleTechnique extends Model
 {
@@ -13,4 +14,9 @@ class BreathingStyleTechnique extends Model
     public $primaryKey = '_id';
 
     public $timestamps = false;
+
+    public function style(): BelongsTo
+    {
+        return $this->belongsTo(BreathingStyle::class, '_breathingStyleId');
+    }
 }

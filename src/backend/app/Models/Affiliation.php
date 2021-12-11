@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\HasUniqueIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Affiliation extends Model
@@ -14,6 +15,11 @@ class Affiliation extends Model
     public $primaryKey = '_id';
 
     public $timestamps = false;
+
+    public function mainAffilation(): BelongsTo
+    {
+        return $this->belongsTo(Affiliation::class, '_parentId');
+    }
 
     public function subAffilations(): HasMany
     {
