@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(BreathingStyleSeeder::class);
         $this->call(AffilationSeeder::class);
+        $this->call(CharacterSeeder::class);
     }
 }
