@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Breathing;
 
+use App\Models\Breathing\BreathingStyle;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class BreathingStyleFactory extends Factory
 {
@@ -17,7 +17,7 @@ class BreathingStyleFactory extends Factory
         return [
             '_parentId' => $this->faker->randomElement([
                 null,
-                BreathingStyleFactory::factory()->create()->uuid
+                BreathingStyle::factory()->create()->uuid
             ]),
             'name' => $this->faker->word()
         ];
