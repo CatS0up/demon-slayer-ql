@@ -231,10 +231,10 @@ class BreathingStyleSeeder extends Seeder
     private function createSubStylesForStyleModel(Model $model, array ...$styles): void
     {
         foreach ($styles as $style) {
-            $model->subStyles()->create(['name' => $style['name']]);
+            $substyle = $model->subStyles()->create(['name' => $style['name']]);
 
             foreach ($style['techniques'] as $technique) {
-                $model->techniques()->create(['name' => $technique]);
+                $substyle->techniques()->create(['name' => $technique]);
             }
         }
     }
