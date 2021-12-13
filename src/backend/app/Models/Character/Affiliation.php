@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Character;
 
 use App\Traits\HasUniqueIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,7 +17,7 @@ class Affiliation extends Model
     public $timestamps = false;
 
     protected $casts = [
-        '_id' => 'string',
+        '_id'       => 'string',
         '_parentId' => 'string',
     ];
 
@@ -29,5 +29,10 @@ class Affiliation extends Model
     public function subAffiliations(): HasMany
     {
         return $this->hasMany(Affiliation::class, '_parentId', '_id');
+    }
+
+    public function characters(): HasMany
+    {
+        return $this->hasMany(Character::class, '_characterId');
     }
 }
