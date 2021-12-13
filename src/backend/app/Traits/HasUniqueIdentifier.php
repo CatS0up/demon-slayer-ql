@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 
 trait HasUniqueIdentifier
 {
-
     public function getIncrementing()
     {
         return false;

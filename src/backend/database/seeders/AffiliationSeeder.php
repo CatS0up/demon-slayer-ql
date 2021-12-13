@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Affiliation;
+use App\Models\Character\Affiliation;
 use Illuminate\Database\Seeder;
 
 class AffiliationSeeder extends Seeder
@@ -95,7 +95,7 @@ class AffiliationSeeder extends Seeder
             if (key_exists('children', $affilation)) {
                 foreach ($affilation['children'] as $subAffilation) {
 
-                    $model->subAffilations()->create(
+                    $model->subAffiliations()->create(
                         [
                             'name'              => $subAffilation['name'],
                             'description' => $subAffilation['description']

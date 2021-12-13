@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Affiliation;
-use App\Models\Character;
+use App\Models\Character\Affiliation;
+use App\Models\Character\Character;
 use Illuminate\Database\Seeder;
 
 class CharacterSeeder extends Seeder

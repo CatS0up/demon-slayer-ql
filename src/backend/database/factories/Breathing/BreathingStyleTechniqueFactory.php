@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Breathing;
 
+use App\Models\Breathing\BreathingStyle;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BreathingStyleTechniqueFactory extends Factory
@@ -14,7 +15,7 @@ class BreathingStyleTechniqueFactory extends Factory
     public function definition()
     {
         return [
-            '_breathingStyleId' => BreathingStyleFactory::factory()->create()->uuid,
+            '_breathingStyleId' => BreathingStyle::factory()->create()->_id,
             'name'              => $this->faker->word()
         ];
     }
