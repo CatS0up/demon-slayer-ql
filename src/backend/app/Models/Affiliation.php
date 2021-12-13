@@ -16,12 +16,17 @@ class Affiliation extends Model
 
     public $timestamps = false;
 
-    public function mainAffilation(): BelongsTo
+    protected $casts = [
+        '_id' => 'string',
+        '_parentId' => 'string',
+    ];
+
+    public function parentAffilation(): BelongsTo
     {
         return $this->belongsTo(Affiliation::class, '_parentId');
     }
 
-    public function subAffilations(): HasMany
+    public function subAffiliations(): HasMany
     {
         return $this->hasMany(Affiliation::class, '_parentId', '_id');
     }
