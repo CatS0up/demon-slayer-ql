@@ -1,8 +1,7 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Character;
 
-use App\Models\Affiliation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AffiliationFactory extends Factory
@@ -15,10 +14,6 @@ class AffiliationFactory extends Factory
     public function definition()
     {
         return [
-            '_parentId' => $this->faker->randomElement([
-                null,
-                Affiliation::factory()->create()->uuid
-            ]),
             'name'        => $this->faker->word(),
             'description' => $this->faker->sentence(50)
         ];
