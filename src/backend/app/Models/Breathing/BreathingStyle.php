@@ -16,6 +16,11 @@ class BreathingStyle extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        '_id'       => 'string',
+        '_parentId' => 'string',
+    ];
+
     public function parentStyle(): belongsTo
     {
         return $this->belongsTo(BreathingStyle::class, '_parentId');

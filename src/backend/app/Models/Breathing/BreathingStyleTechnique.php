@@ -15,6 +15,10 @@ class BreathingStyleTechnique extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        '_id'       => 'string',
+    ];
+
     public function style(): BelongsTo
     {
         return $this->belongsTo(BreathingStyle::class, '_breathingStyleId');
