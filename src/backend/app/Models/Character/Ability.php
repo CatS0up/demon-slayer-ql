@@ -21,6 +21,11 @@ class Ability extends Model
 
     public function characters(): BelongsToMany
     {
-        return $this->belongsToMany(Character::class, '_characterId');
+        return $this->belongsToMany(
+            Character::class,
+            'character_abilities',
+            '_abilityId',
+            '_characterId'
+        );
     }
 }

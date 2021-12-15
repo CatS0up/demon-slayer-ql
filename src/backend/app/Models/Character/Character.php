@@ -36,11 +36,6 @@ class Character extends Model
         return $this->hasMany(BreathingStyle::class, '_affiliationId');
     }
 
-    public function bloodDemonArtTechniques(): HasMany
-    {
-        return $this->hasMany(BloodDemonArtTechnique::class, '_bloodDemonArtId');
-    }
-
     public function relatives(): BelongsToMany
     {
         return $this->belongsToMany(Character::class, '_relativeId');
@@ -48,12 +43,21 @@ class Character extends Model
 
     public function breathingStyleTechniques(): BelongsToMany
     {
-        return $this->belongsToMany(BreathingStyleTechnique::class, '_characterId')
-            ->groupBy('_breathingStyleId');
+        return $this->belongsToMany(
+            BreathingStyleTechnique::class,
+            'breathing_style_techniques',
+            '_breathingStyleTechniqueId',
+            '_characterId'
+        );
     }
 
     public function abilities(): BelongsToMany
     {
-        return $this->belongsToMany(Ability::class, '_abilityId');
+        return $this->belongsToMany(
+            Ability::class,
+            'character_abilities',
+            '_abilityId',
+            '_characterId'
+        );
     }
 }
