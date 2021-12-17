@@ -2,11 +2,13 @@
 
 namespace Database\Factories\Character;
 
-use App\Models\Character\Affiliation;
+use App\Models\Breathing\BreathingStyle;
+use App\Models\Character\Character;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CharacterFactory extends Factory
 {
+    protected $model = Character::class;
     /**
      * Define the model's default state.
      *
@@ -15,8 +17,7 @@ class CharacterFactory extends Factory
     public function definition()
     {
         return [
-            '_affiliationId'      => Affiliation::factory()->create()->_id,
-            '_breathingStyleId'   => $this->faker->randomElement([null, Affiliation::factory()->create()->_id]),
+            '_breathingStyleId'   => $this->faker->randomElement([null, BreathingStyle::factory()->create()->_id]),
             'name'                => $this->faker->firstName(),
             'age'                 => $this->faker->randomNumber(),
             'firstAnimeApperance' => $this->faker->word(),
