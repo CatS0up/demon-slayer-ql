@@ -19,7 +19,7 @@ class Ability extends Model
         '_id'       => 'string',
     ];
 
-    public function characters(): BelongsToMany
+    public function owners(): BelongsToMany
     {
         return $this->belongsToMany(
             Character::class,

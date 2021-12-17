@@ -2,10 +2,12 @@
 
 namespace App\Models\Breathing;
 
+use App\Models\Character\Character;
 use App\Traits\HasUniqueIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BreathingStyle extends Model
@@ -23,7 +25,7 @@ class BreathingStyle extends Model
 
     public function parentStyle(): belongsTo
     {
-        return $this->belongsTo(BreathingStyle::class, '_parentId');
+        return $this->belongsTo(BreathingStyle::class, '_parentId', '_id');
     }
 
     public function subStyles(): HasMany
@@ -34,5 +36,15 @@ class BreathingStyle extends Model
     public function techniques(): HasMany
     {
         return $this->hasMany(BreathingStyleTechnique::class, '_breathingStyleId');
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Character::class,
+            'character_breathing_styles',
+            '_breathingStyleId',
+            '_characterId'
+        );
     }
 }

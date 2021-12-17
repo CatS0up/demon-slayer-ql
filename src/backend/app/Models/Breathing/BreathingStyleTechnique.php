@@ -23,7 +23,7 @@ class BreathingStyleTechnique extends Model
 
     public function style(): BelongsTo
     {
-        return $this->belongsTo(BreathingStyle::class, '_breathingStyleId');
+        return $this->belongsTo(BreathingStyle::class, '_breathingStyleId', '_id');
     }
 
     public function users(): BelongsToMany
@@ -31,8 +31,8 @@ class BreathingStyleTechnique extends Model
         return $this->belongsToMany(
             Character::class,
             'character_breathing_style_techniques',
-            '_characterId',
-            '_breathingStyleTechniqueId'
+            '_breathingStyleTechniqueId',
+            '_characterId'
         );
     }
 }

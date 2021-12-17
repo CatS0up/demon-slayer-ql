@@ -2,7 +2,6 @@
 
 namespace App\Models\Character;
 
-use App\Models\Affiliation;
 use App\Models\BloodDemonArtTechnique;
 use App\Models\Breathing\BreathingStyle;
 use App\Models\Breathing\BreathingStyleTechnique;
@@ -11,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Character extends Model
 {
@@ -26,28 +24,19 @@ class Character extends Model
         '_parentId' => 'string',
     ];
 
-    public function affiliation(): HasOne
+    public function bloodDemonArtTechniques(): HasMany
     {
-        return $this->hasOne(Affiliation::class, '_affiliationId');
+        return $this->hasMany(BloodDemonArtTechnique::class, '_demonId', '_id');
     }
 
-    public function breathingStyle(): HasMany
-    {
-        return $this->hasMany(BreathingStyle::class, '_affiliationId');
-    }
 
     public function relatives(): BelongsToMany
     {
-        return $this->belongsToMany(Character::class, '_relativeId');
-    }
-
-    public function breathingStyleTechniques(): BelongsToMany
-    {
         return $this->belongsToMany(
-            BreathingStyleTechnique::class,
-            'breathing_style_techniques',
-            '_breathingStyleTechniqueId',
-            '_characterId'
+            Character::class,
+            'character_relatives',
+            '_characterId',
+            '_relativeId'
         );
     }
 
@@ -56,8 +45,38 @@ class Character extends Model
         return $this->belongsToMany(
             Ability::class,
             'character_abilities',
-            '_abilityId',
-            '_characterId'
+            '_characterId',
+            '_abilityId'
+        );
+    }
+
+    public function affiliations(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Affiliation::class,
+            'character_affiliations',
+            '_characterId',
+            '_affiliationId'
+        );
+    }
+
+    public function breathingStyles(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            BreathingStyle::class,
+            'character_breathing_styles',
+            '_characterId',
+            '_breathingStyleId'
+        );
+    }
+
+    public function breathingStyleTechniques(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            BreathingStyleTechnique::class,
+            'character_breathing_style_techniques',
+            '_characterId',
+            '_breathingStyleTechniqueId',
         );
     }
 }
