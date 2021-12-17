@@ -16,6 +16,7 @@ class CreateBloodDemonArtTechniquesTable extends Migration
         Schema::create('blood_demon_art_techniques', function (Blueprint $table) {
             $table->uuid('_id');
             $table->primary('_id');
+            $table->foreignUuid('_demonId')->constrained('characters', '_id');
             $table->string('name')->index();
             $table->text('description');
         });
