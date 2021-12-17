@@ -20,7 +20,6 @@ class CharacterSeeder extends Seeder
         $characters = [
             // Ubuyashiki Family
             [
-                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
                 '_breathingStyleId'   => null,
                 'name'                => 'Kagaya Ubuyashiki',
                 'age'                 => 23,
@@ -31,7 +30,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
                 '_breathingStyleId'   => null,
                 'name'                => 'Amane Ubuyashiki',
                 'age'                 => 27,
@@ -42,7 +40,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
                 '_breathingStyleId'   => null,
                 'name'                => 'Amane Ubuyashiki',
                 'age'                 => 27,
@@ -53,7 +50,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
                 '_breathingStyleId'   => null,
                 'name'                => 'Hinaki Ubuyashiki',
                 'age'                 => 9,
@@ -64,7 +60,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
                 '_breathingStyleId'   => null,
                 'name'                => 'Nichika Ubuyashiki',
                 'age'                 => 8,
@@ -75,7 +70,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_affiliationId'      => $affiliations->firstWhere('name', 'Ubuyashiki Family')->_id,
                 '_breathingStyleId'   => null,
                 'name'                => 'Nichika Ubuyashiki',
                 'age'                 => 8,
