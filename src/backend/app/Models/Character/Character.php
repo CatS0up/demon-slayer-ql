@@ -2,7 +2,7 @@
 
 namespace App\Models\Character;
 
-use App\Models\BloodDemonArtTechnique;
+use App\Models\BloodDemonArt;
 use App\Models\Breathing\BreathingStyle;
 use App\Models\Breathing\BreathingStyleTechnique;
 use App\Traits\HasUniqueIdentifier;
@@ -24,9 +24,9 @@ class Character extends Model
         '_parentId' => 'string',
     ];
 
-    public function bloodDemonArtTechniques(): HasMany
+    public function bloodDemonArts(): HasMany
     {
-        return $this->hasMany(BloodDemonArtTechnique::class, '_demonId', '_id');
+        return $this->hasMany(BloodDemonArt::class, '_characterId', '_id');
     }
 
 

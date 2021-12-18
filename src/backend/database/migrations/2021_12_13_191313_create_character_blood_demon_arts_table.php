@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCharacterBloodDemonArtTechniquesTable extends Migration
+class CreateCharacterBloodDemonArtsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCharacterBloodDemonArtTechniquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('character_blood_demon_art_techniques', function (Blueprint $table) {
+        Schema::create('character_blood_demon_arts', function (Blueprint $table) {
             $table->foreignUuid('_characterId')->constrained('characters', '_id');
-            $table->foreignUuid('_bloodDemonArtTechniqueId')->constrained('blood_demon_art_techniques', '_id');
+            $table->foreignUuid('_bloodDemonArtId')->constrained('blood_demon_arts', '_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateCharacterBloodDemonArtTechniquesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_blood_demon_art_techniques');
+        Schema::dropIfExists('character_blood_demon_arts');
     }
 }

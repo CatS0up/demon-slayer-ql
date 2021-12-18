@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Models\Character;
 
+use App\Models\BloodDemonArt;
 use App\Models\BloodDemonArtTechnique;
 use App\Models\Breathing\BreathingStyle;
 use App\Models\Breathing\BreathingStyleTechnique;
@@ -281,52 +282,52 @@ class CharacterTest extends TestCase
         $this->assertTrue($actual->contains($technique2));
     }
 
-    public function testShouldReturnNullWhenCharacterDoesNotHaveAnyBloodDemonArtTechnique(): void
+    public function testShouldReturnNullWhenCharacterDoesNotHaveAnyBloodDemonArts(): void
     {
 
         // When
-        $actual = $this->modelUnderTest->bloodDemonArtTechniques()->first();
+        $actual = $this->modelUnderTest->bloodDemonArts()->first();
 
         // Then
         $this->assertNull($actual);
     }
 
-    public function testShouldReturnNullValueWhenITryGetASingleCharacterBloodDemonArtTechniqueModelAndCharacterDoesNotHaveAnyBloodDemonArtTechniques(): void
+    public function testShouldReturnNullValueWhenITryGetASingleCharacterBloodDemonArtsModelAndCharacterDoesNotHaveAnyBloodDemonArtTechniques(): void
     {
         // When
-        $actual = $this->modelUnderTest->bloodDemonArtTechniques()->get();
+        $actual = $this->modelUnderTest->bloodDemonArts()->get();
 
         // Then
         $this->assertEmpty($actual);
     }
 
-    public function testShouldReturnSingleCharacterBloodDemonArtTechniqueModel(): void
+    public function testShouldReturnSingleCharacterBloodDemonArtsModel(): void
     {
         // Given
-        $technique = BloodDemonArtTechnique::factory()->create([
-            '_demonId' => $this->modelUnderTest->_id
+        $technique = BloodDemonArt::factory()->create([
+            '_characterId' => $this->modelUnderTest->_id
         ]);
 
         $technique->demon()->associate($this->modelUnderTest)->save();
 
         // When
-        $actual = $this->modelUnderTest->bloodDemonArtTechniques()->first();
+        $actual = $this->modelUnderTest->bloodDemonArts()->first();
 
         // Then
         $this->assertEquals($technique->_id, $actual->_id);
     }
 
-    public function testShouldReturnCharacterBloodDemonArtTechniquesCollection(): void
+    public function testShouldReturnCharacterBloodDemonArtsCollection(): void
     {
         // Given
 
-        $technique1 = BloodDemonArtTechnique::factory()
-            ->create(['_demonId' => $this->modelUnderTest->_id]);
-        $technique2 = BloodDemonArtTechnique::factory()
-            ->create(['_demonId' => $this->modelUnderTest->_id]);
+        $technique1 = BloodDemonArt::factory()
+            ->create(['_characterId' => $this->modelUnderTest->_id]);
+        $technique2 = BloodDemonArt::factory()
+            ->create(['_characterId' => $this->modelUnderTest->_id]);
 
         // When
-        $actual = $this->modelUnderTest->bloodDemonArtTechniques()->get();
+        $actual = $this->modelUnderTest->bloodDemonArts()->get();
 
         // Then
 

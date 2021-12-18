@@ -2,22 +2,22 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\BloodDemonArtTechnique;
+use App\Models\BloodDemonArt;
 use App\Models\Character\Character;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class BloodDemonArtTechniqueTest extends TestCase
+class BloodDemonArtTest extends TestCase
 {
     use RefreshDatabase;
 
-    private BloodDemonArtTechnique $modelUnderTest;
+    private BloodDemonArt $modelUnderTest;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->modelUnderTest = BloodDemonArtTechnique::factory()->create();
+        $this->modelUnderTest = BloodDemonArt::factory()->create();
     }
 
     public function testShouldReturnSingleBloodDemonArtDemonModel(): void

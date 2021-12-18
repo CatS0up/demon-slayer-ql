@@ -18,7 +18,6 @@ class CreateCharactersTable extends Migration
             $table->primary('_id');
             $table->string('name');
             $table->text('description');
-            $table->foreignUuid('_breathingStyleId')->nullable()->constrained('breathing_styles', '_id');
             $table->string('animeAvatar')->nullable();
             $table->string('mangaAvatar')->nullable();
             $table->tinyInteger('age')->nullable();

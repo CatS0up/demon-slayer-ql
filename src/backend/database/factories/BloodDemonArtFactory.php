@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Character\Character;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BloodDemonArtTechniqueFactory extends Factory
+class BloodDemonArtFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,7 +15,7 @@ class BloodDemonArtTechniqueFactory extends Factory
     public function definition()
     {
         return [
-            '_demonId'    => Character::factory()->create()->_id,
+            '_characterId'    => Character::factory()->create()->_id,
             'name'        => $this->faker->word(),
             'description' => $this->faker->sentence(50)
         ];
