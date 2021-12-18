@@ -17,7 +17,6 @@ class CharacterFactory extends Factory
     public function definition()
     {
         return [
-            '_breathingStyleId'   => $this->faker->randomElement([null, BreathingStyle::factory()->create()->_id]),
             'name'                => $this->faker->firstName(),
             'age'                 => $this->faker->randomNumber(),
             'firstAnimeApperance' => $this->faker->word(),
