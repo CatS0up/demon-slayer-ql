@@ -20,7 +20,6 @@ class CharacterSeeder extends Seeder
         $characters = [
             // Ubuyashiki Family
             [
-                '_breathingStyleId'   => null,
                 'name'                => 'Kagaya Ubuyashiki',
                 'age'                 => 23,
                 'firstAnimeApperance' => 'Episode 15',
@@ -30,7 +29,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_breathingStyleId'   => null,
                 'name'                => 'Amane Ubuyashiki',
                 'age'                 => 27,
                 'firstAnimeApperance' => 'Kimetsu no Yaiba: The Movie - Mugen Train',
@@ -40,7 +38,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_breathingStyleId'   => null,
                 'name'                => 'Amane Ubuyashiki',
                 'age'                 => 27,
                 'firstAnimeApperance' => 'Kimetsu no Yaiba: The Movie - Mugen Train',
@@ -50,7 +47,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_breathingStyleId'   => null,
                 'name'                => 'Hinaki Ubuyashiki',
                 'age'                 => 9,
                 'firstAnimeApperance' => 'Episode 15',
@@ -60,7 +56,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_breathingStyleId'   => null,
                 'name'                => 'Nichika Ubuyashiki',
                 'age'                 => 8,
                 'firstAnimeApperance' => 'Episode 15',
@@ -70,7 +65,6 @@ class CharacterSeeder extends Seeder
                 'mangaAvatar'         => null,
             ],
             [
-                '_breathingStyleId'   => null,
                 'name'                => 'Nichika Ubuyashiki',
                 'age'                 => 8,
                 'firstAnimeApperance' => 'Episode 15',
