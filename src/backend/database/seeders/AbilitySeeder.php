@@ -129,7 +129,8 @@ class AbilitySeeder extends Seeder
             'Skilled Torturer',
             'Master Swordsmith',
             'Ordinary Human Abilities',
-            'Ordinary Demon abilities'
+            'Ordinary Demon abilities',
+            'Spider Physiology'
         ];
 
         foreach ($abilities as $ability) {
