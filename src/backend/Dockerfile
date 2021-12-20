@@ -6,14 +6,16 @@ WORKDIR /var/www/html/
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libpq-dev \
-    zip \
     vim \
+    curl \
+    zip \
     git \
-    curl
+    openssl \
+    libssl-dev \
+    libpcre3-dev
 
-RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-RUN docker-php-ext-install pdo pdo_pgsql pgsql
+RUN pecl install mongodb
+RUN docker-php-ext-enable mongodb
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

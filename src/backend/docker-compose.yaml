@@ -17,19 +17,34 @@ services:
     networks:
       - app-network
 
-  postgres:
-    image: postgres
-    container_name: postgres
+  mongo:
+    image: mongo
+    container_name: mongo
     restart: unless-stopped
     tty: true
     ports:
-      - 5432:5432
+      - 27017:27017
     volumes:
-      - postgres_data:/var/lib/postgres/data
+      - mongo_data:/var/lib/mongo/data
     environment:
-      - POSTGRES_DB=${DB_DATABASE}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${DB_DATABASE}
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+    networks:
+      - app-network
+
+  mongo-db-test:
+    image: mongo
+    container_name: mongo-db-test
+    restart: unless-stopped
+    tty: true
+    command: mongod --port 27018
+    ports:
+      - 27018:27018
+    environment:
+      - MONGO_INITDB_DATABASE=${DB_DATABASE}
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
     networks:
       - app-network
 
@@ -49,7 +64,8 @@ services:
     depends_on:
       - backend
       - client
-      - pgsql
+      - mongo
+      - mongo-db-test
     build:
       context: ./nginx
       dockerfile: Dockerfile
@@ -64,4 +80,4 @@ services:
 networks:
   app-network:
 volumes:
-  postgres_data:
+  mongo_data:
