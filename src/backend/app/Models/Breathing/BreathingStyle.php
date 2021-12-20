@@ -3,25 +3,15 @@
 namespace App\Models\Breathing;
 
 use App\Models\Character\Character;
-use App\Traits\HasUniqueIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BreathingStyle extends Model
 {
-    use HasFactory, HasUniqueIdentifier;
-
-    public $primaryKey = '_id';
-
-    public $timestamps = false;
-
-    protected $casts = [
-        '_id'       => 'string',
-        '_parentId' => 'string',
-    ];
+    use HasFactory;
 
     public function parentStyle(): belongsTo
     {

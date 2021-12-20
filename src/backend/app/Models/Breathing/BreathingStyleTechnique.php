@@ -3,23 +3,14 @@
 namespace App\Models\Breathing;
 
 use App\Models\Character\Character;
-use App\Traits\HasUniqueIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class BreathingStyleTechnique extends Model
 {
-    use HasFactory, HasUniqueIdentifier;
-
-    public $primaryKey = '_id';
-
-    public $timestamps = false;
-
-    protected $casts = [
-        '_id'       => 'string',
-    ];
+    use HasFactory;
 
     public function style(): BelongsTo
     {

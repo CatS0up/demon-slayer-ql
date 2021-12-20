@@ -15,9 +15,8 @@ class BloodDemonArtFactory extends Factory
     public function definition()
     {
         return [
-            '_characterId'    => Character::factory()->create()->_id,
-            'name'        => $this->faker->word(),
-            'description' => $this->faker->sentence(50)
+            'name'         => $this->faker->word(),
+            'description'  => $this->faker->sentence(50)
         ];
     }
 }
