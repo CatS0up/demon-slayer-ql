@@ -5,10 +5,18 @@ module.exports = {
         additionalData: `@import "~@/assets/scss/_main.scss";`
       }
     },
-    },
-    pluginOptions: {
+  },
+  pluginOptions: {
     apollo: {
-        lintGQL: true
+      lintGQL: true
     }
-},
+  },
+  chainWebpack: config => {
+    config
+      .plugin('html')
+      .tap(args => {
+          args[0].title = "Kimetsu no Yaiba Ql";
+            return args;
+      })
+    }
 }
