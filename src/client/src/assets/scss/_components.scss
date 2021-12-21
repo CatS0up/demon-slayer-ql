@@ -1,0 +1,12 @@
+.list {
+  &--decorated {
+    list-style-type: trad-chinese-informal;
+    list-style-position: inside;
+  }
+
+  &__item {
+    margin-top: 0.7rem;
+
+    color: $text-color-gray;
+  }
+}

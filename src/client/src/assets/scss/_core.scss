@@ -1,0 +1,31 @@
+/* VARIABLES */
+
+$text-color-gray: #475569;
+$border-color-gray: #e4e4e7;
+
+// Responsive breakpoints
+$breakpoints: (
+    medium: 800px,
+    large: 1024px,
+);
+
+/* MIXINS */
+@mixin flex($direction: row, $justify-content: flex-start, $align-items: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+// Media queries
+@mixin media($breakpoint) {
+    $width: map-get($breakpoints, $breakpoint);
+
+    @if($width) {
+        @media (min-width: $width) {
+            @content;
+        }
+    } @else {
+        @error '"#{$breakpoint} - doesn\'t exists"';
+    }
+}
