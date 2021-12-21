@@ -2,9 +2,9 @@
   <div class="start-page">
     <start-header />
 
-    <start-hello-section />
-
     <start-navigation />
+
+    <start-hello-section />
   </div>
 </template>
 
@@ -26,8 +26,15 @@ export default {
 <style lang="scss" scoped>
 .start-page {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  min-height: 100vh;
 
-  height: 100%;
+  @include media(medium) {
+    grid-template-columns: 3fr 1fr;
+    grid-auto-rows: 360px;
+  }
+
+  @include media(large) {
+    grid-auto-rows: auto;
+  }
 }
 </style>
