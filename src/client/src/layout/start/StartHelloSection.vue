@@ -47,6 +47,10 @@ export default {
     order: 1;
   }
 
+  @include media(large) {
+    align-items: center;
+  }
+
   &__code-container {
     max-width: 500px;
 
