@@ -1,28 +1,26 @@
 <template>
   <documentation-layout>
     <template v-slot:aside>
-      <table-of-contents />
+      <character-filters />
     </template>
 
     <template v-slot:content>
-      <documentation-article />
+      <character-list />
     </template>
   </documentation-layout>
 </template>
 
 <script>
 import DocumentationLayout from "@/layout/DocumentationLayout.vue";
-import DocumentationArticle from "@/layout/documentation/DocumentationArticle.vue";
-import TableOfContents from "@/layout/documentation/TableOfContents.vue";
+import CharacterFilters from "@/layout/explore/CharacterFilters.vue";
+import CharacterList from "@/layout/explore/CharacterList.vue";
 
 export default {
-  name: "DocumentationPage",
+  name: "ExplorePage",
   components: {
     DocumentationLayout,
-    DocumentationArticle,
-    TableOfContents,
+    CharacterFilters,
+    CharacterList,
   },
 };
 </script>
-
-
