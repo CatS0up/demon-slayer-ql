@@ -27,12 +27,7 @@
         >
       </li>
       <li class="navbar__item">
-        <router-link
-          to="#"
-          class="navbar__link"
-          active-class="navbar__link--active"
-          >Playground</router-link
-        >
+        <a :href="playgroundUrl" class="navbar__link">Playground</a>
       </li>
       <li class="navbar__item">
         <router-link
@@ -56,6 +51,9 @@ export default {
   components: { ThemeToggler },
   name: "DocumentationNavigation",
   component: { ThemeToggler },
+  computed: {
+    playgroundUrl: () => process.env.VUE_APP_GRAPHQL_PLAYGROUND_HTTP,
+  },
 };
 </script>
 
