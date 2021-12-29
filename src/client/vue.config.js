@@ -8,14 +8,14 @@ module.exports = {
   },
   pluginOptions: {
     apollo: {
-      lintGQL: true
+      lintGQL: false
     }
   },
   chainWebpack: config => {
     config
       .plugin('html')
       .tap(args => {
-          args[0].title = "Kimetsu no Yaiba Ql";
+          args[0].title = process.env.APP_NAME;
             return args;
       })
     }
