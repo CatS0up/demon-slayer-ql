@@ -85,13 +85,10 @@ export default {
 
     list-style: none;
   }
-  &__item {
+  &__item:not(:first-of-type) {
     margin-left: 1rem;
-
-    &:first-of-type {
-      margin-left: 0;
-    }
   }
+
   &__link {
     font-weight: 500;
 

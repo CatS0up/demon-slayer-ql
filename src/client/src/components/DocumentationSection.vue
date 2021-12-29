@@ -54,12 +54,8 @@ export default {
 
 <style lang="scss" scoped>
 .section {
-  margin-top: 2rem;
-
-  &--normal-section {
-    &:first-of-type {
-      margin-top: 0;
-    }
+  &:not(:first-of-type) {
+    margin-top: 2rem;
   }
 
   &--sub-section {
