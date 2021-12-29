@@ -17,7 +17,9 @@ export default {
 
   outline: none;
   border: none;
-  border-bottom: 1px solid var(--font-color);
+  border-bottom: 1px solid var(--border-color);
+
+  background-color: transparent;
 
   color: var(--font-color);
   font-size: 1rem;

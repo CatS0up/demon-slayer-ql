@@ -17,7 +17,7 @@ export default {
 
   font-size: 0.9rem;
 
-  background-color: #272822;
+  background-color: $card-bg-dark-mode;
   color: #f8f8f2;
 }
 </style>

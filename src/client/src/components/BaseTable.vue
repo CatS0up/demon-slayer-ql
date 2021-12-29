@@ -85,12 +85,17 @@ export default {
   &__header-cell {
     padding: 1rem 0.7rem;
 
+    color: var(--secondary-color);
+
     text-align: left;
     font-weight: 500;
   }
 
   &__row {
-    &:nth-last-of-type(2n) {
+    color: var(--secondary-color);
+
+    &:nth-of-type(2n) {
+      color: #000;
       background-color: #f6f6f6;
     }
   }

@@ -72,6 +72,8 @@ export default {
   border-radius: 0.3rem;
   overflow: hidden;
 
+  background-color: var(--card-bg);
+
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 
   &__header {
@@ -123,7 +125,7 @@ export default {
 
   &__label {
     font-weight: 500;
-    color: black;
+    color: var(--secondary-color);
   }
 }
 </style>

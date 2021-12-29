@@ -102,7 +102,7 @@ export default {
     color: var(--secondary-color);
 
     &--active {
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid var(--secondary-color);
     }
   }
 }
