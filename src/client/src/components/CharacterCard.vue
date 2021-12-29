@@ -16,25 +16,27 @@
       </div>
       <p class="character-card__meta">
         <span class="character-card__label">Name:</span>
-        Shinobu Kocho
-      </p>
-      <p class="character-card__meta">
-        <span class="character-card__label">Race:</span>
-        Human
-      </p>
-      <p class="character-card__meta">
-        <span class="character-card__label">Gender:</span>
-        Female
+        {{ character.name }}
       </p>
       <p class="character-card__meta">
         <span class="character-card__label">Age:</span>
-        23
+        {{ character.age || "?" }}
+      </p>
+      <p class="character-card__meta">
+        <span class="character-card__label">Race:</span>
+        {{ character.race }}
+      </p>
+      <p class="character-card__meta">
+        <span class="character-card__label">Gender:</span>
+        {{ character.gender }}
+      </p>
+      <p class="character-card__meta">
+        <span class="character-card__label">Occupation:</span>
+        {{ character.occupation }}
       </p>
       <p class="character-card__meta">
         <span class="character-card__label">Description:</span>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-        quibusdam numquam sunt aut libero nesciunt ad cupiditate doloribus
-        officia possimus.
+        {{ character.shortDescription }}
       </p>
     </section>
   </article>
@@ -45,6 +47,9 @@ import ToggleSwitch from "@/primitives/ToggleSwitch.vue";
 
 export default {
   name: "CharacterCard",
+  props: {
+    character: Object,
+  },
   components: { ToggleSwitch },
   data() {
     return {
@@ -71,10 +76,10 @@ export default {
 
   &__header {
     position: relative;
+    height: 150px;
     // TODO: change when avatars gonna be from api
     background-image: url(../assets/images/bg_slayer.png);
-
-    height: 30%;
+    background-size: cover;
   }
 
   &__avatar-switch {
@@ -106,9 +111,11 @@ export default {
   &__body {
     // 50 px avatar_height / 2 + 10 px
     padding: 60px 1rem 1rem 1rem;
+    min-height: fit-content;
   }
 
   &__meta {
+    display: block;
     margin-top: 0.2rem;
 
     font-size: 0.9rem;
