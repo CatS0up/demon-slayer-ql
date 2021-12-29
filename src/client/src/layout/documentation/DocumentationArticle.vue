@@ -1,180 +1,25 @@
 <template>
   <article class="documentation">
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
-
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
-
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
-
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
-
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
-
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
-
-    <documentation-section id="introduction" :type="sectionType">
-      <template v-slot:title> Introduction </template>
-
-      <section-paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-        pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-        nihil modi incidunt, aperiam illum ea dolore tempora corrupti provident!
-        Sequi eaque dolores veniam.
-      </section-paragraph>
-
-      <documentation-section id="introduction" :type="subSectionType">
-        <template v-slot:title> Subsection </template>
-
-        <section-paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-          pariatur esse perspiciatis exercitationem, quibusdam aliquam delectus
-          nihil modi incidunt, aperiam illum ea dolore tempora corrupti
-          provident! Sequi eaque dolores veniam.
-        </section-paragraph>
-      </documentation-section>
-    </documentation-section>
+    <introduction-section />
+    <character-section />
+    <breathing-style-section />
+    <affiliation-section />
   </article>
 </template>
 
 <script>
-import { SECTION_TYPE, SUB_SECTION_TYPE } from "@/helpers/constants.js";
-
-import DocumentationSection from "@/components/DocumentationSection.vue";
-import SectionParagraph from "@/primitives/SectionParagraph.vue";
+import IntroductionSection from "./partials/IntroductionSection.vue";
+import CharacterSection from "./partials/CharacterSection.vue";
+import BreathingStyleSection from "./partials/BreathingStyleSection.vue";
+import AffiliationSection from "./partials/AffiliationSection";
 
 export default {
   name: "DocumentationArticle",
   components: {
-    DocumentationSection,
-    SectionParagraph,
-  },
-  computed: {
-    sectionType() {
-      return SECTION_TYPE;
-    },
-    subSectionType() {
-      return SUB_SECTION_TYPE;
-    },
+    IntroductionSection,
+    CharacterSection,
+    BreathingStyleSection,
+    AffiliationSection,
   },
 };
 </script>
