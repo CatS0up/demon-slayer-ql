@@ -16,9 +16,9 @@
         <hamburger-toggler @update:isActive="toggleSidebar()" />
       </div>
 
-      <article class="documentatio-layout__content">
+      <div class="documentatio-layout__content">
         <slot name="content" />
-      </article>
+      </div>
     </div>
   </div>
 </template>
@@ -69,6 +69,8 @@ export default {
   &__wrapper {
     display: grid;
     margin-top: calc(61px + 0.15rem);
+
+    min-height: calc(100vh - 61px - 0.15rem);
 
     transition: margin-left 0.3s linear;
 
