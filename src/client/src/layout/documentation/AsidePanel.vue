@@ -36,8 +36,8 @@ export default {
   padding: 1.5rem 1.8rem;
   z-index: 999;
 
-  background-color: #fff;
-  border-right: 2px solid #e4e4e7;
+  background-color: var(--background-color);
+  border-right: 2px solid var(--border-color);
   line-height: 1.8;
 
   overflow-y: scroll;

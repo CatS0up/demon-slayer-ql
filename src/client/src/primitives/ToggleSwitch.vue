@@ -40,7 +40,7 @@ export default {
 
     transition: 0.3s ease-in-out;
 
-    background-color: $text-color-gray;
+    background-color: var(--font-color);
     border-radius: 40px;
 
     &:before {

@@ -42,13 +42,20 @@
           >References</router-link
         >
       </li>
+      <li class="navbar__item">
+        <theme-toggler />
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import ThemeToggler from "@/components/ThemeToggler.vue";
+
 export default {
+  components: { ThemeToggler },
   name: "DocumentationNavigation",
+  component: { ThemeToggler },
 };
 </script>
 
@@ -67,8 +74,8 @@ export default {
   padding: 0.3rem 1rem;
   font-size: 1.2rem;
 
-  background-color: #fff;
-  border-bottom: 1px solid $border-color-gray;
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
 
   &__logo-container {
     display: flex;
@@ -91,6 +98,8 @@ export default {
 
   &__link {
     font-weight: 500;
+
+    color: var(--secondary-color);
 
     &--active {
       border-bottom: 2px solid black;

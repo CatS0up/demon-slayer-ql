@@ -1,7 +1,17 @@
 /* VARIABLES */
 
-$text-color-gray: #475569;
-$border-color-gray: #e4e4e7;
+$text-color-light-mode: #6B7280;
+$background-color-light-mode: #fff;
+$h-color-light-mode: #000;
+$border-color-light-mode: #e4e4e7;
+
+$text-color-dark-mode: #fff;
+$background-color-dark-mode: #0b1222;
+$h-color-dark-mode: #ae81ff;
+$border-color-dark-mode: #fff;
+
+
+
 
 // Responsive breakpoints
 $breakpoints: (

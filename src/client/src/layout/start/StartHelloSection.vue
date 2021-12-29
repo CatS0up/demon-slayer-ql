@@ -1,21 +1,21 @@
 <template>
   <section class="hello-section">
-    <div class="hello-section_image-container">
-      <img src="@/assets/images/giyu.png" alt="Giyu Tomioka chibi art." />
+    <div class="hello-section__image-container">
+      <base-picture
+        image="giyu.png"
+        alt="Giyu Tomioka chibi art."
+        class="hello-section__image-container"
+      />
     </div>
 
-    <code-container class="hello-section__code-container">
+    <code-container lang="json" class="hello-section__code-container">
       <pre>
           {
               "name": "Giyu Tomioka",
-              "race": "human",
-              "gender": "male",
-              "occupation": "water hashira",
-              "breathingStyle": "water"
-              "affiliations": [
-                0: "Demon Slayer Corps",
-                1: "Hashira"
-              ]
+              "race": "Human",
+              "gender": "Male",
+              "age": 21,
+              "occupation": "Water Hashira",
           }
           </pre
       >
@@ -24,12 +24,14 @@
 </template>
 
 <script>
+import BasePicture from "@/primitives/BasePicture.vue";
 import CodeContainer from "@/components/CodeContainer.vue";
 
 export default {
   name: "StartHelloSection",
   components: {
     CodeContainer,
+    BasePicture,
   },
 };
 </script>
@@ -49,6 +51,10 @@ export default {
 
   @include media(large) {
     align-items: center;
+  }
+
+  &__image-container {
+    max-width: 140px;
   }
 
   &__code-container {

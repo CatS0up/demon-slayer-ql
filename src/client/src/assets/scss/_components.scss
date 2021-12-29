@@ -7,16 +7,6 @@
   &__item {
     margin-top: 0.7rem;
 
-    color: $text-color-gray;
+    color: var(--font-color);
   }
-}
-
-.h1,
-.h2 {
-  font-weight: 700;
-  color: black;
-}
-
-.h2 {
-  font-size: 1.1rem;
 }

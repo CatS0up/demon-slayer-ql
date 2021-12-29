@@ -4,13 +4,48 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-color: #{$text-color-light-mode};
+  --background-color: #{$background-color-light-mode};
+  --secondary-color: #{$h-color-light-mode};
+  --border-color: #{$border-color-light-mode};
+}
+
+[data-theme="dark"] {
+  --font-color: #{$text-color-dark-mode};
+  --background-color: #{$background-color-dark-mode};
+  --secondary-color: #{$h-color-dark-mode};
+  --border-color: #{$border-color-dark-mode};
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+.h2 {
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2,
+.h2 {
+  font-size: 1.1rem;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
 p {
-  color: $text-color-gray;
+  color: var(--font-color);
   line-height: 1.8;
 }
 

@@ -17,9 +17,9 @@ export default {
 
   outline: none;
   border: none;
-  border-bottom: 1px solid $text-color-gray;
+  border-bottom: 1px solid var(--font-color);
 
-  color: $text-color-gray;
+  color: var(--font-color);
   font-size: 1rem;
 }
 </style>
