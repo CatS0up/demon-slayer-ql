@@ -1,17 +1,17 @@
 <template>
   <nav class="start-nav">
     <h2 class="start-nav__title">Go to</h2>
-    <ul class="list list--decorated start-nav__list">
-      <li class="list__item">
-        <router-link :to="{ name: 'explore' }">Explore</router-link>
-      </li>
-      <li class="list__item">
+    <ul class="start-nav__items">
+      <li class="start-nav__item">
         <router-link :to="{ name: 'documentation' }">Docs</router-link>
       </li>
-      <li class="list__item">
+      <li class="start-nav__item">
+        <router-link :to="{ name: 'explore' }">Explore</router-link>
+      </li>
+      <li class="start-nav__item">
         <a :href="playgroundUrl">Playground</a>
       </li>
-      <li class="list__item">
+      <li class="start-nav__item">
         <router-link to="#">References</router-link>
       </li>
     </ul>
@@ -44,14 +44,24 @@ export default {
     }
   }
 
-  &__list {
-    display: flex;
+  &__items {
+    @include flex($justify-content: center);
+    flex-wrap: wrap;
     gap: 1rem;
+
+    list-style-type: trad-chinese-informal;
+    list-style-position: inside;
 
     @include media(medium) {
       display: block;
       gap: 0;
     }
+  }
+
+  &__item {
+    margin-top: 0.7rem;
+
+    color: var(--primary-color);
   }
 }
 </style>

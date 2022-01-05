@@ -42,6 +42,8 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  padding-bottom: 4rem;
+
   @include media(medium) {
     flex-direction: row;
     justify-content: center;
@@ -51,14 +53,19 @@ export default {
 
   @include media(large) {
     align-items: center;
+    padding-bottom: 0;
   }
 
   &__image-container {
     max-width: 140px;
+
+    margin-top: 2rem;
   }
 
   &__code-container {
     max-width: 500px;
+
+    margin-top: 2rem;
 
     @include media(medium) {
       padding-left: 3rem;

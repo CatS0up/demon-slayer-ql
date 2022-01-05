@@ -26,8 +26,24 @@ export default {
   grid-column: 1/-1;
   padding: 5rem 3rem;
 
+  text-align: center;
+
+  @include media(small) {
+    text-align: left;
+  }
+
   &__subtitle {
     padding-top: 1rem;
+  }
+
+  &__options {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+
+    @include media(small) {
+      position: static;
+    }
   }
 }
 </style>
