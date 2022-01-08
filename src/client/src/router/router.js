@@ -19,12 +19,32 @@ const routes = [
         name: 'documentation',
         component: () => import('@/views/DocumentationPage.vue')
     },
+       {
+        path: '/references',
+        name: 'references',
+        component: () => import('@/views/ReferencesPage.vue')
+    },
+    {
+        path: '*',
+        name: '404',
+        component: () => import('@/views/PageNotFound.vue')
+    }
 ];
 
 export default new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    scrollBehavior () {
+    scrollBehavior(to) {
+        if (to.hash) {
+
+            const hashPostion = document.querySelector(`${to.hash}`).offsetTop - 60 - 20;
+
+            return {
+                x: 0,
+                y: hashPostion , // 60 -> navbar height
+            }
+        }
+
         return {
             x: 0,
             y: 0
