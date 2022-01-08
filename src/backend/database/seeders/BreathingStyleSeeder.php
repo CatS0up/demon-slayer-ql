@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Breathing\BreathingStyle;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 class BreathingStyleSeeder extends Seeder
@@ -15,227 +14,109 @@ class BreathingStyleSeeder extends Seeder
      */
     public function run()
     {
-        $sunStyle =  BreathingStyle::create(['name' => 'Sun']);
+        $sunStyle = BreathingStyle::create([
+            'name'        => 'Sun',
+            'description' => 'Hinokami Kagura is a Breathing Style only known and taught by the Kamado Family, later revealed to be the first Breathing Style, Sun Breathing.'
+        ]);
 
-        $sunTechniques = [
-            'First Form: Dance',
-            'First Form: Dancing Flash',
-            'Second Form: Clear Blue Sky',
-            'Third Form: Raging Sun',
-            'Fourth Form: Burning Bones, Summer Sun',
-            'Fifth Form: Setting Sun Transformation',
-            'Sixth Form: Solar Heat Haze',
-            'Seventh Form: Beneficent Radiance',
-            'Eighth Form: Sunflower Thrust',
-            'Ninth Form: Dragon Sun Halo Head Dance',
-            'Tenth Form: Fire Wheel',
-            'Eleventh Form: Fake Rainbow',
-            'Twelfth Form: Flame Dance',
-            'Thirteenth'
+        // Sun childStyles
+        $subStyles = [
+            [
+                'name'        => 'Water',
+                'description' => 'Water Breathing is a Breathing Style that mimics water, specifically the flow, flexibility and adaptability of the liquid and replicates it with the user\'s movements, techniques and abilities.'
+            ],
+            [
+                'name'        => 'Moon',
+                'description' => 'Moon Breathing is a Breathing Style that mimics the moon and replicates it with the user\'s movements, techniques and abilities. Most, if not all, known techniques and forms are standard yet varied swordsmanship techniques that focus on swift and powerful strikes that always follow the shape and pattern of a crescent moon.'
+            ],
+            [
+                'name'        => 'Flame',
+                'description' => 'Flame Breathing is a Breathing Style that mimics flames and replicates it with the user\'s movements, techniques and abilities.'
+            ],
+            [
+                'name'        => 'Thunder',
+                'description' => 'Thunder Breathing is a Breathing Style that mimics lightning, specifically swift strikes and movements akin to lightning ripping through the sky, and replicates it with the user\'s movements, techniques and abilities.'
+            ],
+            [
+                'name'        => 'Stone',
+                'description' => 'Stone Breathing is a Breathing Style that mimics earth and stone and replicates it with the user\'s movements, techniques and abilities.'
+            ],
+            [
+                'name'        => 'Wind',
+                'description' => 'Wind Breathing is a Breathing Style that mimics wind, specifically powerful torrents of air and whirlwinds, and replicates it with the user\'s movements, techniques and abilities.'
+            ],
         ];
 
-        foreach ($sunTechniques as $technique) {
-            $sunStyle->techniques()->create(['name' => $technique]);
+        foreach ($subStyles as $substyleData) {
+            $sunStyle->childStyles()->create($substyleData);
         }
 
-        // Closest descendants of Sun style
-        $this->createSubStylesForStyleModel(
-            $sunStyle,
+        // Water childStyles
+        $subStyles = [
             [
-                'name' => 'Water',
-                'techniques' => [
-                    'First Form: Water Surface Slash',
-                    'Second Form: Water Wheel',
-                    'Second Form: Improved, Lateral Water Wheel',
-                    'Third Form: Flowing Dance',
-                    'Fourth Form: Striking Tide',
-                    'Striking Tide: Turbulent',
-                    'Fifth Form: Blessed Rain After the Drought',
-                    'Sixth Form: Whirlpool',
-                    'Sixth Form: Whirlpool, Flow ',
-                    'Seventh Form: Drop Ripple Thrust',
-                    'Eighth Form: Waterfall Basin',
-                    'Ninth Form: Splashing Water Flow, Turbulent',
-                    'Tenth Form: Constant Flux',
-                    'Eleventh Form: Dead Calm'
-                ]
+                'name'        => 'Flower',
+                'description' => 'Flower Breathing is a Breathing Style that mimics flowers and fruits and replicates with the user\'s movements, techniques and abilities.'
             ],
             [
-                'name' => 'Moon',
-                'techniques' => [
-                    'First Form: Dark Moon, Evening Palace',
-                    'Second Form: Pearl Flower Moongazing',
-                    'Third Form: Loathsome Moon, Chains',
-                    'Fifth Form: Moon Spirit Calamitous Eddy',
-                    'Sixth Form: Perpetual Night, Lonely Moon - Incessant',
-                    'Seventh Form: Mirror of Misfortune, Moonlit',
-                    'Eighth Form: Moon-Dragon Ringtail',
-                    'Ninth Form: Waning Moonswaths',
-                    'Tenth Form: Drilling Slashes, Moon Through Bamboo Leaves',
-                    'Fourteenth Form: Catastrophe, Tenman Crescent Moon',
-                    'Sixteenth Form: Moonbow, Half Moon'
-                ]
+                'name'        => 'Serpent',
+                'description' => 'Serpent Breathing is a Breathing Style that mimics serpents and snakes, specifically their slithering motions, and replicates it with the user\'s movements, techniques and abilities.'
             ],
+        ];
+
+        foreach ($subStyles as $substyleData) {
+            BreathingStyle::whereName('Water')->first()->childStyles()->create($substyleData);
+        }
+
+        // Flame childStyles
+        $subStyles = [
             [
-                'name' => 'Flame',
-                'techniques' => [
-                    'First Form: Unknowing Fire',
-                    'Second Form: Rising Scorching Sun',
-                    'Third Form: Blazing Universe',
-                    'Fourth Form: Blooming Flame Undulation',
-                    'Fifth Form: Flame Tiger',
-                    'Ninth Form: Rengoku'
-                ]
-            ],
-            [
-                'name' => 'Thunder',
-                'techniques' => [
-                    'First Form: Thunderclap and Flash',
-                    'First Form: Thunderclap and Flash - Sixfold',
-                    'First Form: Thunderclap and Flash - Eightfold',
-                    'First Form: Thunderclap and Flash - God Speed',
-                    'Second Form: Rice Spirit',
-                    'Third Form: Thunder Swarm',
-                    'Fourth Form: Distant Thunder',
-                    'Fifth Form: Heat Lightning',
-                    'Sixth Form: Rumble and Flash',
-                    'Seventh Form: Honoikazuchi no Kami'
-                ]
-            ],
-            [
-                'name' => 'Stone',
-                'techniques' => [
-                    'First Form: Serpentinite Bipolar',
-                    'Second Form: Upper Smash',
-                    'Third Form: Stone Skin',
-                    'Fourth Form: Volcanic Rock, Rapid Conquest',
-                    'Fifth Form: Arcs of Justice'
-                ]
-            ],
-            [
-                'name' => 'Wind',
-                'techniques' => [
-                    'First Form: Dust Whirlwind Cutter',
-                    'Second Form: Claws-Purifying Wind',
-                    'Third Form: Clean Storm Wind Tree',
-                    'Fifth Form: Cold Mountain Wind',
-                    'Sixth Form: Black Wind Mountain Mist',
-                    'Seventh Form: Gale, Sudden Gusts',
-                    'Eighth Form: Primary Gale Slash',
-                    'Ninth Form: Idaten Typhoon'
-                ]
+                'name'        => 'Love',
+                'description' => 'Love Breathing is a Breathing Style that is based of the emotion of love. Most, if not all, known techniques form a combination of mid to long-ranged whip-like attacks that utilize the user\'s own flexibility, dexterity, agility and speed.'
             ]
-        );
+        ];
 
-        // Water
-        $this->createSubStylesForStyleModel(
-            BreathingStyle::firstWhere('name', 'Water'),
+        foreach ($subStyles as $substyleData) {
+            BreathingStyle::whereName('Flame')->first()->childStyles()->create($substyleData);
+        }
+
+        // Thunder childStyles
+        $subStyles = [
             [
-                'name' => 'Flower',
-                'techniques' => [
-                    'Second Form: Honorable Shadow Plum',
-                    'Fourth Form: Crimson Hanagoromo',
-                    'Fifth Form: Peonies of Futility',
-                    'Sixth Form: Whirling Peach',
-                    'Final Form: Equinoctial Vermilion Eye'
-                ]
+                'name'        => 'Sound',
+                'description' => 'Sound Breathing is a Breathing Style that mimics sound, specifically its disorientating loudness, and replicates it with the user\'s movements, techniques and abilities.'
+            ]
+        ];
+
+        foreach ($subStyles as $substyleData) {
+            BreathingStyle::whereName('Thunder')->first()->childStyles()->create($substyleData);
+        }
+
+        // Wind childStyles
+        $subStyles = [
+            [
+                'name'        => 'Beast',
+                'description' => 'Beast Breathing is a Breathing Style that mimics beasts and wild animals, specifically their unpredictable and wild nature, including movements, attacks and senses, and replicates it with the user\'s movements, techniques and abilities.'
             ],
             [
-                'name' => 'Serpent',
-                'techniques' => [
-                    'First Form: Winding Serpent Slash',
-                    'Second Form: Venom Fangs of the Narrow Head',
-                    'Third Form: Coil Choke',
-                    'Fourth Form: Twin-Headed Reptile',
-                    'Fifth Form: Slithering Serpent'
-                ]
-            ]
-        );
-
-        // Flower
-        $this->createSubStylesForStyleModel(
-            BreathingStyle::firstWhere('name', 'Flower'),
-            [
-                'name' => 'Insect',
-                'techniques' => [
-                    'Butterfly Dance: Caprice',
-                    'Dance of the Bee Sting: True Flutter',
-                    'Dance of the Dragonfly: Compound Eye Hexagon',
-                    'Dance of the Centipede: Hundred-Legged Zigzag'
-                ]
-            ]
-        );
-
-        // Flame
-        $this->createSubStylesForStyleModel(
-            BreathingStyle::firstWhere('name', 'Flame'),
-            [
-                'name' => 'Love',
-                'techniques' => [
-                    'First Form: Shivers of First Love',
-                    'Second Form: Love Pangs',
-                    'Third Form: Catlove Shower',
-                    'Fifth Form: Swaying Love, Wildclaw',
-                    'Sixth Form: Cat-Legged Winds of Love'
-                ]
-            ]
-        );
-
-        // Thunder
-        $this->createSubStylesForStyleModel(
-            BreathingStyle::firstWhere('name', 'Thunder'),
-            [
-                'name' => 'Sound',
-                'techniques' => [
-                    'First Form: Roar',
-                    'Fourth Form: Constant Resounding Slashes',
-                    'Fifth Form: String Performance',
-                ]
-            ]
-        );
-
-        // Wind
-        $this->createSubStylesForStyleModel(
-            BreathingStyle::firstWhere('name', 'Wind'),
-            [
-                'name' => 'Beast',
-                'techniques' => [
-                    'First Fang: Pierce',
-                    'Second Fang: Slice',
-                    'Third Fang: Devour',
-                    'Fourth Fang: Slice \'n\' Dice',
-                    'Fifth Fang: Crazy Cutting',
-                    'Sixth Fang: Palisade Bite',
-                    'Seventh Form: Spatial Awareness',
-                    'Eighth Fang: Explosive Rush',
-                    'Ninth Fang: Extending Bendy Slash',
-                    'Tenth Fang: Whirling Fangs',
-                    'Sudden Throwing Strike'
-                ]
+                'name'        => 'Mist',
+                'description' => 'Mist Breathing is a Breathing Style that mimics mist, specifically the obscurity of mist, and replicates it with the user\'s movements, techniques and abilities.'
             ],
+        ];
+
+        foreach ($subStyles as $substyleData) {
+            BreathingStyle::whereName('Wind')->first()->childStyles()->create($substyleData);
+        }
+
+        // Flower childStyles
+        $subStyles = [
             [
-                'name' => 'Mist',
-                'techniques' => [
-                    'First Form: Low Clouds, Distant Haze',
-                    'Second Form: Eight-Layered Mist',
-                    'Third Form: Scattering Mist Splash',
-                    'Fourth Form: Shifting Flow Slash',
-                    'Fifth Form: Sea of Clouds and Haze',
-                    'Sixth Form: Lunar Dispersing Mist',
-                    'Seventh Form: Obscuring Clouds'
-                ]
-            ]
-        );
-    }
+                'name'        => 'Insect',
+                'description' => 'Insect Breathing is a Breathing Style that mimics insects, specifically their lethal stings and movements, and replicates it with user\'s movements, techniques and abilities.'
+            ],
+        ];
 
-    private function createSubStylesForStyleModel(Model $model, array ...$styles): void
-    {
-        foreach ($styles as $style) {
-            $substyle = $model->subStyles()->create(['name' => $style['name']]);
-
-            foreach ($style['techniques'] as $technique) {
-                $substyle->techniques()->create(['name' => $technique]);
-            }
+        foreach ($subStyles as $substyleData) {
+            BreathingStyle::whereName('Flower')->first()->childStyles()->create($substyleData);
         }
     }
 }
