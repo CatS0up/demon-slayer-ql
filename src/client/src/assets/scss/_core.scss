@@ -1,25 +1,75 @@
 /* VARIABLES */
 
-$text-color-light-mode: #6B7280;
-$background-color-light-mode: #fff;
-$h-color-light-mode: #000;
+$primary-color-light-mode: #6B7280;
+$secondary-color-light-mode: #1F2937;
+$bg-primary-color-light-mode: #fff;
+$bg-secondary-light-mode: #fff;
 $border-color-light-mode: #e4e4e7;
+$selection-bg-light-mode: #000;
 
-$text-color-dark-mode: #fff;
-$background-color-dark-mode: #0b1222;
-$h-color-dark-mode: #ae81ff;
-$border-color-dark-mode: #fff;
+$primary-color-dark-mode: #fff;
+$secondary-color-dark-mode: #ae81ff;
+$bg-primary-color-dark-mode: #0b1222;
+$bg-secondary-dark-mode: #1e293b;
+$border-color-dark-mode: #1e293b;
+$selection-bg-dark-mode: #ae81ff;
 
 
 
 
-// Responsive breakpoints
+/* Responsive breakpoints */
 $breakpoints: (
+    tiny: 500px,
+    small: 710px,
     medium: 850px,
     large: 1024px,
 );
 
+/* Functions */
+@function notContains($list, $value) {
+    @return (null == index($list, $value));
+}
+
 /* MIXINS */
+@mixin darkMode {
+    [data-theme="dark"] { 
+        @content;
+    }
+}
+
+@mixin aside ($position) {
+    $avaliablePositions: 'left', 'right';
+
+    @debug "#{notContains($avaliablePositions, $position)}";
+
+    @if notContains($avaliablePositions, $position) {
+        @error "#{$position} is incorrect postion!";
+    }
+
+    @if $position == 'right' {
+        right: 0;
+    } @else {
+        left: 0;
+    }
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: calc(100vh - 60px);
+    margin-top: 60px;
+    padding: 1.5rem 1.8rem;
+
+    line-height: 1.8;
+
+    background-color: var(--bg-primary-color);
+    
+}
+
+@mixin bgTransition {
+     transition: background-color 0.2s ease-in-out;
+}
+
 @mixin flex($direction: row, $justify-content: flex-start, $align-items: stretch) {
     display: flex;
     flex-direction: $direction;

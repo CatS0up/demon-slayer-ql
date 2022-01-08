@@ -1,12 +1,9 @@
-.list {
+.link {
   &--decorated {
-    list-style-type: trad-chinese-informal;
-    list-style-position: inside;
-  }
+    font-weight: 500;
 
-  &__item {
-    margin-top: 0.7rem;
+    color: var(--secondary-color);
 
-    color: var(--font-color);
+    text-decoration: underline;
   }
 }

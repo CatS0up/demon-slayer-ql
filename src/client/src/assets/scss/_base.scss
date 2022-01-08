@@ -5,27 +5,40 @@
 }
 
 :root {
-  --font-color: #{$text-color-light-mode};
-  --background-color: #{$background-color-light-mode};
-  --secondary-color: #{$h-color-light-mode};
+  --primary-color: #{$primary-color-light-mode};
+  --secondary-color: #{$secondary-color-light-mode};
+  --bg-primary-color: #{$bg-primary-color-light-mode};
+  --bg-secondary-color: #{$bg-secondary-light-mode};
   --border-color: #{$border-color-light-mode};
+  --selection-bg: #{$selection-bg-light-mode};
 }
 
-[data-theme="dark"] {
-  --font-color: #{$text-color-dark-mode};
-  --background-color: #{$background-color-dark-mode};
-  --secondary-color: #{$h-color-dark-mode};
+@include darkMode {
+  --primary-color: #{$primary-color-dark-mode};
+  --secondary-color: #{$secondary-color-dark-mode};
+  --bg-primary-color: #{$bg-primary-color-dark-mode};
+  --bg-secondary-color: #{$bg-secondary-dark-mode};
   --border-color: #{$border-color-dark-mode};
+  --selection-bg: #{$secondary-color-dark-mode};
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: #fff;
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: var(--bg-primary-color);
+
+  transition: background-color .2s ease-in-out;
 }
 
 h1,
 h2,
 h3,
-.h2 {
+h4,
+.h2,
+.h4 {
   font-weight: 700;
   color: var(--secondary-color);
 }
@@ -36,7 +49,15 @@ h1 {
 
 h2,
 .h2 {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+.h4 {
+  font-size: 1.2rem;
 }
 
 a {
@@ -45,7 +66,7 @@ a {
 }
 
 p {
-  color: var(--font-color);
+  color: var(--primary-color);
   line-height: 1.8;
 }
 
