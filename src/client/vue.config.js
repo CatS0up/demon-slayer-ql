@@ -15,7 +15,7 @@ module.exports = {
     config
       .plugin('html')
       .tap(args => {
-          args[0].title = process.env.APP_NAME;
+          args[0].title = process.env.VUE_APP_NAME;
             return args;
       })
     }
