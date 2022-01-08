@@ -1,0 +1,19 @@
+query characters($page: Int, $perPage: Int, $filter: CharactersInput) {
+  characters(page: $page, first: $perPage, filter: $filter) {
+    data {
+      _id
+      name
+      age
+      gender
+      race
+      occupation
+      description
+      affiliations {
+        name
+      }
+    }
+    paginatorInfo {
+      lastPage
+    }
+  }
+}
