@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Utilities;
 
-use Illuminate\Database\Eloquent\Builder;
+use Jenssegers\Mongodb\Eloquent\Builder;
 
 abstract class QueryFilter
 {

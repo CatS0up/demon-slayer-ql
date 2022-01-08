@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Utilities;
 
-use Illuminate\Database\Eloquent\Builder;
+use Jenssegers\Mongodb\Eloquent\Builder;
 
 class FilterBuilder
 {
-    public const GLOBAL_FILTERS_NAMESPACE = 'App\\Utilities\\GlobalFilters';
+    public const GLOBAL_FILTERS_NAMESPACE = 'App\Utilities\GlobalFilters';
 
     protected Builder $query;
     protected array $filters;
@@ -24,6 +24,9 @@ class FilterBuilder
     public function apply(): Builder
     {
         foreach ($this->filters as $name => $value) {
+            if (empty($value))
+                return $this->query;
+
             $class = $this->buildFilterClassName($this->namespace, $name);
 
             if (!class_exists($class)) {
@@ -32,7 +35,7 @@ class FilterBuilder
                 if (!class_exists($class)) continue;
             };
 
-            (new $class($this->query))->handle($value ?? null);
+            (new $class($this->query))->handle($value);
         }
 
         return $this->query;
