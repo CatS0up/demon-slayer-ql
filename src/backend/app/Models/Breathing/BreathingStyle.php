@@ -3,38 +3,45 @@
 namespace App\Models\Breathing;
 
 use App\Models\Character\Character;
+use App\Utilities\FilterBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Jenssegers\Mongodb\Eloquent\Builder;
 use Jenssegers\Mongodb\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Jenssegers\Mongodb\Relations\BelongsTo;
+use Jenssegers\Mongodb\Relations\BelongsToMany;
+use Jenssegers\Mongodb\Relations\EmbedsMany;
+use Jenssegers\Mongodb\Relations\HasMany;
 
 class BreathingStyle extends Model
 {
     use HasFactory;
 
-    public function parentStyle(): belongsTo
+    public const FILTERS_NAMESPACE = 'App\Utilities\BreathingStyleFilters';
+
+    public $timestamps = false;
+
+    public function parentStyle(): BelongsTo
     {
-        return $this->belongsTo(BreathingStyle::class, '_parentId', '_id');
+        return $this->belongsTo(BreathingStyle::class, 'parent_id');
     }
 
-    public function subStyles(): HasMany
+    public function childStyles(): HasMany
     {
-        return $this->hasMany(BreathingStyle::class, '_parentId', '_id');
+        return $this->hasMany(BreathingStyle::class, 'parent_id');
     }
 
-    public function techniques(): HasMany
+    public function techniques(): EmbedsMany
     {
-        return $this->hasMany(BreathingStyleTechnique::class, '_breathingStyleId');
+        return $this->embedsMany(BreathingTechnique::class);
     }
 
-    public function users(): BelongsToMany
+    public function knownUsers(): BelongsToMany
     {
-        return $this->belongsToMany(
-            Character::class,
-            'character_breathing_styles',
-            '_breathingStyleId',
-            '_characterId'
-        );
+        return $this->belongsToMany(Character::class, null, 'user_ids', 'breathing_style_ids');
+    }
+
+    public function scopeFilterBy(Builder $query, array $filters): Builder
+    {
+        return (new FilterBuilder($query, $filters, self::FILTERS_NAMESPACE))->apply();
     }
 }

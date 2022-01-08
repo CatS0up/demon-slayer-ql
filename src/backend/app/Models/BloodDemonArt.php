@@ -8,4 +8,6 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class BloodDemonArt extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models\Character;
+namespace App\Models\Breathing;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Ability extends Model
+class BreathingTechnique extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 }
