@@ -1,6 +1,9 @@
 <template>
   <article class="character-card">
-    <header class="character-card__header">
+    <header
+      class="character-card__header"
+      :style="{ backgroundImage: `url(${bgImage})` }"
+    >
       <div class="character-card__avatar-container">
         <img :src="avatar" alt="Test" class="character-card__avatar" />
       </div>
@@ -43,6 +46,8 @@
 </template>
 
 <script>
+import { Fractions } from "@/helpers/enums";
+import { stringToSlug } from "@/helpers/helpers";
 import ToggleSwitch from "@/primitives/ToggleSwitch.vue";
 
 export default {
@@ -63,6 +68,27 @@ export default {
 
       return images(`./shinobu_${this.hasMangaAvatar ? "manga" : "anime"}.png`);
     },
+    bgImage() {
+      const images = require.context("@/assets/images/", false);
+
+      const affiliationNames = this.character.affiliations.map(
+        (affiliation) => affiliation.name
+      );
+
+      return images(`./${this.assignImageToCharacter(affiliationNames)}.png`);
+    },
+  },
+  methods: {
+    assignImageToCharacter(affiliationNames) {
+      const availableAffiliations = Fractions.values();
+
+      for (const affiliation of availableAffiliations) {
+        if (affiliationNames.includes(affiliation))
+          return stringToSlug(affiliation);
+      }
+
+      return stringToSlug(Fractions.OTHERS);
+    },
   },
 };
 </script>
@@ -72,16 +98,26 @@ export default {
   border-radius: 0.3rem;
   overflow: hidden;
 
-  background-color: var(--card-bg);
+  background-color: var(--bg-secondary-color);
 
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 
   &__header {
     position: relative;
-    height: 150px;
+    height: 200px;
+
     // TODO: change when avatars gonna be from api
-    background-image: url(../assets/images/bg_slayer.png);
     background-size: cover;
+    background-repeat: no-repeat;
+
+    @include media(tiny) {
+      background-size: 100% 200px;
+    }
+
+    @include media(small) {
+      height: 150px;
+      background-size: 100% 150px;
+    }
   }
 
   &__avatar-switch {
@@ -96,8 +132,10 @@ export default {
     border-radius: 50%;
     overflow: hidden;
 
-    height: 100px;
-    width: 100px;
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    max-width: 100px;
 
     border: 2px solid white;
 

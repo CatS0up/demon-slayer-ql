@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { SECTION_TYPE, SUB_SECTION_TYPE } from "@/helpers/constants.js";
+import { DocSectionType } from "@/helpers/enums";
 
 export default {
   name: "DocuemntationSection",
@@ -24,21 +24,18 @@ export default {
   },
   computed: {
     isSubsection() {
-      return this.type === SUB_SECTION_TYPE;
+      return this.type === DocSectionType.SUBSECTION;
     },
   },
   methods: {
     validate(val) {
-      return this.availableTypes().includes(val);
-    },
-    availableTypes() {
-      return [SECTION_TYPE, SUB_SECTION_TYPE];
+      return DocSectionType.values().includes(val);
     },
     headerTypeFactory(sectionType) {
       switch (sectionType) {
-        case SECTION_TYPE:
+        case DocSectionType.SECTION:
           return "h2";
-        case SUB_SECTION_TYPE:
+        case DocSectionType.SUBSECTION:
           return "h3";
         default:
           throw new Error(`${sectionType} is invalid section type!`);

@@ -60,12 +60,20 @@ export default {
     max-width: 140px;
 
     margin-top: 2rem;
+
+    @include media(medium) {
+      margin-top: 0;
+    }
   }
 
   &__code-container {
     max-width: 500px;
 
     margin-top: 2rem;
+
+    @include media(medium) {
+      margin-top: 0;
+    }
 
     @include media(medium) {
       padding-left: 3rem;

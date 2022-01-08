@@ -88,7 +88,7 @@ export default {
     color: var(--secondary-color);
 
     text-align: left;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   &__row {
@@ -102,6 +102,8 @@ export default {
 
   &__cell {
     padding: 1rem 0.7rem;
+
+    font-weight: 500;
 
     line-height: 1.8;
   }

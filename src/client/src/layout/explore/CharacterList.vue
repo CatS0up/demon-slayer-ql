@@ -1,12 +1,26 @@
 <template>
-  <div class="character-list" v-if="hasLoadedCharacters">
-    <character-card
-      v-for="character in characters"
-      :key="character._id"
-      :character="character"
-    />
+  <div class="character-list">
+    <div class="character-list__items" v-if="hasLoadedCharacters">
+      <character-card
+        v-for="character in characters"
+        :key="character._id"
+        :character="character"
+      />
+    </div>
+
+    <p
+      class="character-list__filter-result"
+      v-else-if="activeFiltering && !hasLoadedCharacters"
+    >
+      Not found...
+    </p>
+
+    <div v-else class="character-list__loader-container">
+      <pulse-loader class="character-list__pulse-loader" />
+    </div>
+
+    <div class="character-list__filter-info">{{ filtersCount }}</div>
   </div>
-  <pulse-loader v-else />
 </template>
 
 <script>
@@ -19,13 +33,30 @@ import PulseLoader from "@/primitives/PulseLoader.vue";
 export default {
   name: "CharacterList",
   mixins: [pagination],
+  props: {
+    filters: Object,
+  },
   components: {
     CharacterCard,
     PulseLoader,
   },
+  watch: {
+    filters: {
+      handler() {
+        this.$apollo.queries.characters.refetch({ filter: this.filters });
+      },
+      deep: true,
+    },
+  },
   computed: {
+    filtersCount() {
+      return Object.values(this.filters).flat().length;
+    },
     hasLoadedCharacters() {
       return !!this.characters.length;
+    },
+    activeFiltering() {
+      return Object.keys(this.filters).length;
     },
     variables() {
       return {
@@ -37,7 +68,6 @@ export default {
   data() {
     return {
       characters: [],
-      isLoadingNext: false,
     };
   },
   apollo: {
@@ -73,11 +103,25 @@ export default {
       });
     },
     handleScroll() {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+
+      if (scrollTop + clientHeight >= scrollHeight)
+        if (this.hasMorePages()) this.showMore();
+    },
+    handleResize() {
+      const lastCard = document.querySelector(".character-card:last-of-type");
+
       if (
-        document.documentElement.scrollTop + window.innerHeight ===
-        document.documentElement.offsetHeight
+        lastCard &&
+        lastCard.offsetTop < document.documentElement.offsetHeight
       )
         this.showMore();
+    },
+    fillCardScreen() {
+      const lastCard = document.querySelector(".character-card:last-of-type");
+
+      if (lastCard && lastCard.offsetTop <= window.innerHeight) this.showMore();
     },
   },
   created() {
@@ -87,10 +131,16 @@ export default {
 
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("resize", this.handleResize);
+  },
+
+  updated() {
+    this.fillCardScreen();
   },
 
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("resize", this.handleResize);
 
     this.characters.length = 10;
   },
@@ -99,10 +149,87 @@ export default {
 
 <style lang="scss" scoped>
 .character-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 325px));
-  justify-content: center;
-  margin: 1rem;
-  gap: 2rem;
+  flex-grow: 1;
+  @include flex($direction: column);
+  margin: 1.3rem 1rem;
+
+  @include media(tiny) {
+    padding: 1rem 3rem;
+  }
+
+  @include media(small) {
+    padding: 0;
+  }
+
+  &__items {
+    display: grid;
+    justify-content: center;
+    gap: 2rem;
+
+    @include media(small) {
+      grid-template-columns: repeat(auto-fill, minmax(auto, 325px));
+    }
+  }
+
+  &__filter-info {
+    position: fixed;
+    right: 25px;
+    bottom: 100px;
+    width: 100%;
+    height: 100%;
+    max-width: 60px;
+    max-height: 60px;
+    line-height: 60px;
+    padding: 0 1rem;
+
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+
+    user-select: none;
+
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      &::after {
+        transform: translateX(calc(-100% + 30px)) scaleY(1);
+      }
+    }
+
+    &::after {
+      content: "Active filters";
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(calc(-100% + 30px)) scaleX(0);
+      transform-origin: center right;
+      height: 100%;
+      width: 200px;
+
+      border-radius: 25px 0 0 25px;
+
+      background-color: rgba(0, 0, 0, 0.7);
+
+      overflow: hidden;
+
+      transition: 0.3s ease-in-out;
+
+      z-index: -1;
+    }
+  }
+
+  &__filter-result {
+    margin: auto 0;
+
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  &__loader-container {
+    margin: auto 0;
+  }
 }
 </style>

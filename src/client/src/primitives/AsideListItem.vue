@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .aside__list-item {
-  color: var(--font-color);
+  color: var(--primary-color);
 
   &:not(:first-of-type) {
     margin-top: 0.5rem;

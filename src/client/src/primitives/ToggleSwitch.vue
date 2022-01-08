@@ -40,7 +40,7 @@ export default {
 
     transition: 0.3s ease-in-out;
 
-    background-color: var(--font-color);
+    background-color: $primary-color-light-mode;
     border-radius: 40px;
 
     &:before {

@@ -1,93 +1,60 @@
 <template>
-  <documentation-section id="affiliation" :type="sectionType">
+  <documentation-section id="introduction" :type="sectionType">
     <template v-slot:title> Introduction </template>
 
     <section-paragraph>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi fugit
-      repellat at. Commodi earum voluptate voluptatum vero aperiam quidem
-      pariatur unde, quo tempora. <code-text>PaginatorInfo</code-text> Impedit
-      cum deleniti quasi autem! Veritatis, officiis?
+      This API is inspired by
+      <base-link
+        destination="https://www.narutoql.com"
+        :isDecorated="true"
+        target="_blank"
+        >Naruto Ql</base-link
+      >. All data using in the models is come from
+      <base-link
+        destination="https://kimetsu-no-yaiba.fandom.com/wiki/Kimetsu_no_Yaiba_Wiki"
+        :isDecorated="true"
+        target="_blank"
+        >Kimetsu no Yaiba fandom</base-link
+      >
+      , if you want to get more details, you should go to the
+      <router-link :to="{ name: 'explore' }" class="link link--decorated"
+        >References</router-link
+      >
+      page.
     </section-paragraph>
 
-    <documentation-section id="affiliation-schema" :type="subSectionType">
-      <template v-slot:title> PaginatorInfo Schema </template>
+    <section-paragraph>
+      You can query the api at <code-text>{{ apiUrl }}</code-text
+      >.
+    </section-paragraph>
 
-      <section-paragraph>
-        <code-text>paginatorInfo</code-text> query provides you info about
-        pagination, like a total item number, current page etc.
-      </section-paragraph>
-
-      <base-container>
-        <base-table :items="items" />
-      </base-container>
-    </documentation-section>
-
-    <documentation-section id="pagination-examples" :type="subSectionType">
-      <template v-slot:title> Examples </template>
-
-      <base-container>
-        <strong class="h2">Query</strong>
-        <code-container lang="graphql">
-          <pre>
-          {
-            characters {
-              paginatorInfo {
-                count
-                currentPage
-                hasMorePages
-                lastPage
-                perPage
-                total
-              }
-            }
-          }
-        </pre
-          >
-        </code-container>
-      </base-container>
-
-      <base-container>
-        <strong class="h2">Response</strong>
-        <code-container lang="json">
-          <pre>
-        {
-          "data": {
-            "characters": {
-              "paginatorInfo": {
-                "count": 10,
-                "currentPage": 1,
-                "hasMorePages": true,
-                "lastPage": 11,
-                "perPage": 10,
-                "total": 110
-              }
-            }
-          }
-        }
-        </pre
-          >
-        </code-container>
-      </base-container>
-    </documentation-section>
+    <section-paragraph>
+      <strong class="h4"
+        >All names are case sensitive ex: "Hashira" != "hashira"!</strong
+      >
+    </section-paragraph>
   </documentation-section>
 </template>
 
 <script>
 import { section } from "@/helpers/mixins.js";
 
+import DocumentationSection from "@/components/DocumentationSection.vue";
+import SectionParagraph from "@/primitives/SectionParagraph.vue";
 import CodeText from "@/primitives/CodeText.vue";
-import CodeContainer from "@/components/CodeContainer.vue";
-import BaseContainer from "@/primitives/BaseContainer.vue";
-import BaseTable from "@/components/BaseTable.vue";
+import BaseLink from "@/primitives/BaseLink.vue";
 
 export default {
   name: "AffiliationSection",
   mixins: [section],
   components: {
+    DocumentationSection,
+    SectionParagraph,
     CodeText,
-    CodeContainer,
-    BaseContainer,
-    BaseTable,
+    BaseLink,
+  },
+  computed: {
+    apiUrl: () => process.env.VUE_APP_GRAPHQL_HTTP,
   },
   data() {
     return {

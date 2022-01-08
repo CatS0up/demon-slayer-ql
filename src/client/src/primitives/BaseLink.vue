@@ -1,5 +1,9 @@
 <template>
-  <a :href="destination" class="link">
+  <a
+    :href="destination"
+    class="link"
+    :class="{ 'link--decorated': isDecorated }"
+  >
     <slot />
   </a>
 </template>
@@ -9,6 +13,11 @@ export default {
   name: "BaseLink",
   props: {
     destination: String,
+    isDecorated: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
 };
 </script>

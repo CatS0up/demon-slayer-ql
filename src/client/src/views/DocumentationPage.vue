@@ -5,21 +5,21 @@
     </template>
 
     <template v-slot:content>
-      <documentation-article />
+      <documentation-docs />
     </template>
   </documentation-layout>
 </template>
 
 <script>
 import DocumentationLayout from "@/layout/DocumentationLayout.vue";
-import DocumentationArticle from "@/layout/documentation/DocumentationArticle.vue";
+import DocumentationDocs from "@/layout/documentation/DocumentationDocs.vue";
 import TableOfContents from "@/layout/documentation/TableOfContents.vue";
 
 export default {
   name: "DocumentationPage",
   components: {
     DocumentationLayout,
-    DocumentationArticle,
+    DocumentationDocs,
     TableOfContents,
   },
 };

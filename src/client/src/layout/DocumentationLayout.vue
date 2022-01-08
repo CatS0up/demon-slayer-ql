@@ -1,6 +1,6 @@
 <template>
   <div class="documentation-layout">
-    <documentation-navigation />
+    <documentation-navigation @update:isActive="toggleMobileMenu" />
 
     <aside-panel :isActive.sync="activeSidebar">
       <slot name="aside" />
@@ -12,28 +12,37 @@
         'documentation-layout__wrapper--active-sidebar': activeSidebar,
       }"
     >
-      <div class="documentation-layout__options">
-        <hamburger-toggler @update:isActive="toggleSidebar()" />
-      </div>
-
-      <div class="documentatio-layout__content">
+      <div class="documentation-layout__content">
         <slot name="content" />
       </div>
     </div>
+
+    <mobile-navigation :isActive.sync="activeMobileMenu" />
+
+    <circle-toggler
+      @update:isActive="toggleSidebar"
+      class="documentation-layout__circle-toggler"
+    />
   </div>
 </template>
 
 <script>
+import { Breakpoint } from "@/helpers/enums";
+import { toggleMobileMenu } from "@/helpers/mixins";
+
 import DocumentationNavigation from "@/layout/documentation/DocumentationNavigation.vue";
 import AsidePanel from "@/layout/documentation/AsidePanel.vue";
-import HamburgerToggler from "@/components/HamburgerToggler.vue";
+import CircleToggler from "@/primitives/CircleToggler.vue";
+import MobileNavigation from "./documentation/MobileNavigation.vue";
 
 export default {
   name: "DocumentationLayout",
+  mixins: [toggleMobileMenu],
   components: {
     DocumentationNavigation,
     AsidePanel,
-    HamburgerToggler,
+    CircleToggler,
+    MobileNavigation,
   },
   data() {
     return {
@@ -51,13 +60,13 @@ export default {
   },
 
   created() {
-    const MAX_ELEMENT_WIDTH = 1024;
-
-    this.toggleSidebarWhenElementWidthIsLessThan(window, MAX_ELEMENT_WIDTH);
-
-    window.addEventListener("resize", (e) =>
-      this.toggleSidebarWhenElementWidthIsLessThan(e.target, MAX_ELEMENT_WIDTH)
-    );
+    this.toggleSidebarWhenElementWidthIsLessThan(window, Breakpoint.LARGE);
+    window.addEventListener("resize", () => {
+      this.toggleMobileMenuWhenElementWidthIsGreatherThan(
+        window,
+        Breakpoint.SMALL
+      );
+    });
   },
 };
 </script>
@@ -66,8 +75,10 @@ export default {
 .documentation-layout {
   min-height: calc(100vh - 61px - 0.15rem);
 
+  overflow: hidden;
+
   &__wrapper {
-    display: grid;
+    @include flex($direction: column);
     margin-top: calc(61px + 0.15rem);
 
     min-height: calc(100vh - 61px - 0.15rem);
@@ -76,13 +87,27 @@ export default {
 
     &--active-sidebar {
       @include media(medium) {
-        margin-left: 250px;
+        margin-left: 270px;
       }
     }
   }
 
   &__options {
     padding: 1rem;
+  }
+
+  &__content {
+    @include flex($direction: column);
+    flex-grow: 1;
+  }
+
+  // Mixins
+  &__circle-toggler {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+
+    z-index: 900;
   }
 }
 </style>

@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .base-container {
-  margin-top: 1rem;
+  display: block;
+  margin: 1rem 0;
 }
 </style>

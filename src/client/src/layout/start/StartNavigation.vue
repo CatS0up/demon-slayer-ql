@@ -9,10 +9,10 @@
         <router-link :to="{ name: 'explore' }">Explore</router-link>
       </li>
       <li class="start-nav__item">
-        <a :href="playgroundUrl">Playground</a>
+        <a :href="playgroundUrl" target="_blank">Playground</a>
       </li>
       <li class="start-nav__item">
-        <router-link to="#">References</router-link>
+        <router-link :to="{ name: 'references' }">References</router-link>
       </li>
     </ul>
   </nav>
@@ -36,10 +36,11 @@ export default {
   }
 
   &__title {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     text-align: center;
 
     @include media(medium) {
+      font-size: 1.2rem;
       text-align: left;
     }
   }
@@ -60,6 +61,12 @@ export default {
 
   &__item {
     margin-top: 0.7rem;
+
+    font-size: 1.4rem;
+
+    @include media(medium) {
+      font-size: inherit;
+    }
 
     color: var(--primary-color);
   }

@@ -28,7 +28,7 @@ export default {
 
   text-align: center;
 
-  @include media(small) {
+  @include media(tiny) {
     text-align: left;
   }
 
@@ -41,7 +41,7 @@ export default {
     top: 5%;
     right: 5%;
 
-    @include media(small) {
+    @include media(tiny) {
       position: static;
     }
   }

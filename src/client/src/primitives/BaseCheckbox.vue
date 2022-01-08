@@ -4,22 +4,16 @@
       @change="handle"
       class="base-checkbox__input"
       type="checkbox"
-      :value="inputValue"
+      v-bind="$attrs"
     />
     <slot />
   </label>
 </template>
 
 <script>
+import { customCheckbox } from "@/helpers/mixins";
 export default {
   name: "BaseCheckbox",
-  props: {
-    inputValue: String,
-  },
-  methods: {
-    handle(e) {
-      this.$emit("input", e.target.value);
-    },
-  },
+  mixins: [customCheckbox],
 };
 </script>

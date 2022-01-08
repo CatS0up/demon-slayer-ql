@@ -1,5 +1,5 @@
 <template>
-  <code-highlight :language="lang">
+  <code-highlight :language="lang" class="code-container">
     <slot />
   </code-highlight>
 </template>
@@ -24,3 +24,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.code-container {
+  width: 100%;
+}
+</style>

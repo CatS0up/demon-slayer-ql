@@ -1,11 +1,11 @@
 <template>
   <documentation-layout>
     <template v-slot:aside>
-      <character-filters />
+      <character-filters :filters.sync="filters" />
     </template>
 
     <template v-slot:content>
-      <character-list />
+      <character-list :filters="filters" />
     </template>
   </documentation-layout>
 </template>
@@ -21,6 +21,11 @@ export default {
     DocumentationLayout,
     CharacterFilters,
     CharacterList,
+  },
+  data() {
+    return {
+      filters: {},
+    };
   },
 };
 </script>

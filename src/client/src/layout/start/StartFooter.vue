@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <base-link destination="https://github.com/CatS0up">
+    <base-link destination="https://github.com/CatS0up" target="_blank">
       <svg
         class="footer__social-icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,6 +29,8 @@ export default {
   margin-top: auto;
   grid-column: 1/-1;
   order: 3;
+
+  padding: 1rem 0;
 
   color: var(--primary-color);
 

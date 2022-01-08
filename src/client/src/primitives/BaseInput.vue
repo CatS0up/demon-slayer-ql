@@ -1,18 +1,19 @@
 <template>
-  <input @input="handle" class="aside__input" />
+  <input @input="handle" class="base-input" />
 </template>
 
 <script>
 import { customInput } from "@/helpers/mixins";
 
 export default {
-  name: "AsideInput",
+  name: "BaseInput",
   mixins: [customInput],
 };
 </script>
 
 <style lang="scss" scoped>
-.aside__input {
+.base-input {
+  width: 100%;
   padding-bottom: 0.3rem;
 
   outline: none;
@@ -21,7 +22,7 @@ export default {
 
   background-color: transparent;
 
-  color: var(--font-color);
+  color: var(--primary-color);
   font-size: 1rem;
 }
 </style>
