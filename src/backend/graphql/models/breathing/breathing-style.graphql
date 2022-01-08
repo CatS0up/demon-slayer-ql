@@ -1,11 +1,23 @@
-type BreathingStyle {
-    ID: ID!
+type BreathingStyle @model(class: "App\\Models\\Breathing\\BreathingStyle") {
+    _id: ID!
     name: String!
+    description: String!
     parentStyle: BreathingStyle @belongsTo
-    techniques: [BreathingStyleTechnique!]! @hasMany
+    childStyles: [BreathingStyle!] @hasMany
+    techniques: [BreathingTechnique!]!
+    knownUsers: [Character!]! @belongsToMany
+}
+
+input BreathingStylesInput {
+    name: String
+    parentStyle: String
 }
 
 extend type Query {
-    breathingStyles: [BreathingStyle!]! @all
-    breathingStyle:(_id: ID @eq): BreathingStyle @find
+    breathingStyle(_id: ID @eq): BreathingStyle @find
+    breathingStyles(filter: BreathingStylesInput): [BreathingStyle!]!
+        @paginate(
+            defaultCount: 10
+            builder: "App\\GraphQL\\Builders\\BreathingStylesBuilder@filter"
+        )
 }

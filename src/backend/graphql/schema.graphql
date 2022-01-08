@@ -7,4 +7,5 @@ scalar DateTime
 
 type Query
 
+#import models/*.graphql
 #import models/**/*.graphql

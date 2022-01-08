@@ -1,0 +1,6 @@
+type BreathingTechnique
+    @model(class: "App\\Models\\Breathing\\BreathingTechnique") {
+    _id: ID!
+    name: String!
+    description: String!
+}

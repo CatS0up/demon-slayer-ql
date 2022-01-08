@@ -1,0 +1,37 @@
+type Character @model(class: "\\App\\Models\\Character\\Character") {
+    _id: ID!
+    name: String!
+    age: Int
+    gender: String!
+    race: String!
+    occupation: String!
+    description: String!
+    animeAvatar: String
+    mangaAvatar: String
+    firstAnimeApperance: String
+    firstMangaApperance: String
+    abilities: [String!]
+    affiliations: [Affiliation!]! @belongsToMany
+    breathingStyles: [BreathingStyle!] @belongsToMany
+    bloodDemonArts: [BloodDemonArt!]
+}
+
+input CharactersInput {
+    name: String
+    race: [String]
+    gender: [String]
+    ability: [String]
+    affiliation: [String]
+    breathingStyle: [String]
+    hasBloodDemonArt: Boolean
+    hasBreathingStyle: Boolean
+}
+
+extend type Query {
+    character(_id: ID @eq): Character @find
+    characters(filter: CharactersInput): [Character!]!
+        @paginate(
+            defaultCount: 10
+            builder: "App\\GraphQL\\Builders\\CharactersBuilder@filter"
+        )
+}

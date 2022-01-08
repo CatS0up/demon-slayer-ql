@@ -1,0 +1,22 @@
+type Affiliation @model(class: "App\\Models\\Character\\Affiliation") {
+    _id: ID!
+    name: String!
+    description: String!
+    mainAffiliation: Affiliation
+    subAffiliations: [Affiliation!]
+    members: [Character!]! @belongsToMany
+}
+
+input AffiliationsInput {
+    name: String
+    mainAffiliation: String
+}
+
+extend type Query {
+    affiliation(_id: ID @eq): Affiliation @find
+    affiliations(filter: AffiliationsInput): [Affiliation!]!
+        @paginate(
+            defaultCount: 10
+            builder: "App\\GraphQL\\Builders\\AffiliationsBuilder@filter"
+        )
+}
