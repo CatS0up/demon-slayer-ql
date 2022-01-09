@@ -5,7 +5,18 @@
       :style="{ backgroundImage: `url(${bgImage})` }"
     >
       <div class="character-card__avatar-container">
-        <img :src="avatar" alt="Test" class="character-card__avatar" />
+        <img
+          :src="avatar"
+          alt="Test"
+          class="character-card__avatar"
+          v-if="avatar"
+        />
+        <img
+          src="@/assets/images/empty-avatar.png"
+          alt=""
+          class="character-card__avatar"
+          v-else
+        />
       </div>
     </header>
 
@@ -39,7 +50,7 @@
       </p>
       <p class="character-card__meta">
         <span class="character-card__label">Description:</span>
-        {{ character.shortDescription }}
+        {{ character.description }}
       </p>
     </section>
   </article>
@@ -63,10 +74,9 @@ export default {
   },
   computed: {
     avatar() {
-      // TODO: change when avatars gonna be from api
-      const images = require.context("@/assets/", false, /\.png$/);
-
-      return images(`./shinobu_${this.hasMangaAvatar ? "manga" : "anime"}.png`);
+      return this.hasMangaAvatar
+        ? this.character.mangaAvatar
+        : this.character.animeAvatar;
     },
     bgImage() {
       const images = require.context("@/assets/images/", false);
@@ -106,7 +116,6 @@ export default {
     position: relative;
     height: 200px;
 
-    // TODO: change when avatars gonna be from api
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -142,7 +151,6 @@ export default {
     outline: 1px solid black;
   }
 
-  // TODO: change when avatars gonna be from api
   &__avatar {
     width: 100%;
     height: 100%;

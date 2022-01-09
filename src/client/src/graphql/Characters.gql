@@ -8,6 +8,8 @@ query characters($page: Int, $perPage: Int, $filter: CharactersInput) {
       race
       occupation
       description
+      animeAvatar
+      mangaAvatar
       affiliations {
         name
       }
