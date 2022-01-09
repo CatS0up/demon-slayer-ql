@@ -4,7 +4,6 @@ namespace App\Models\Character;
 
 use App\Models\BloodDemonArt;
 use App\Models\Breathing\BreathingStyle;
-use App\Models\Breathing\BreathingTechnique;
 use App\Utilities\FilterBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Storage;
@@ -22,18 +21,17 @@ class Character extends Model
 
     public $timestamps = false;
 
-    public static function boot(): void
+    protected static function booted()
     {
-        parent::boot();
+        parent::booted();
 
         self::created(function (Character $model) {
-
             $slug = Str::slug($model->name);
 
-            if (Storage::disk('public')->exists("avatars/$slug/anime.png"))
-                $model->animeAvatar = Storage::url("avatars/$slug/anime.png");
-            if (Storage::disk('public')->exists("avatars/$slug/manga.png"))
-                $model->mangaAvatar = Storage::url("avatars/$slug/anime.png");
+            if (Storage::disk('public')->exists("/avatars/{$slug}/anime.png"))
+                $model->animeAvatar = route('character.avatar', ['character' => $model, 'image' => 'anime.png']);
+            if (Storage::disk('public')->exists("/avatars/{$slug}/manga.png"))
+                $model->mangaAvatar = route('character.avatar', ['character' => $model, 'image' => 'manga.png']);
 
             $model->save();
         });
