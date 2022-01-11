@@ -32,3 +32,7 @@ Route::get('media/{character}/{image}', function (Character $character, string $
     return response('Picture not found', 404);
 })
     ->name('character.avatar');
+
+Route::any('{query}', fn () => redirect()->route('graphql-playground'))
+    ->where('query', '.*')
+    ->name('default.redirect');
