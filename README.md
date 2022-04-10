@@ -15,7 +15,9 @@
   <a href="#inspiration">Inspiration</a>
 </p>
 
-![screenshot](https://github.com/CatS0up/demon-slayer-ql/tree/main/media/playground.gif)
+![screenshot](https://raw.githubusercontent.com/CatS0up/demon-slayer-ql/main/media/playground.gif)
+
+
 
 ## Key Features
 [Visit the documentation](https://github.com/sass/sass) for more information
