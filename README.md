@@ -20,7 +20,7 @@
 
 
 ## Key Features
-[Visit the documentation](https://github.com/sass/sass) for more information
+[Visit the documentation](https://demon-slayer-ql.netlify.app) for more information
 
 API provides data about:
 * 118 Characters
