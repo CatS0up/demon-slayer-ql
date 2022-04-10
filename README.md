@@ -4,15 +4,15 @@
 
 <br>
 
-<h1 style="text-align: center;">Demon Slayer Ql</h1>
+<h1 align="center">Demon Slayer Ql</h1>
 
-<h4 style="text-align: center;">API provided data about popular anime serie.</h4>
+<h4 align="center">API provided data about popular anime serie.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">Technologies</a> •
-  <a href="#download">Setup</a> •
-  <a href="#license">Inspiration</a>
+  <a href="#technologies">Technologies</a> •
+  <a href="#setup">Setup</a> •
+  <a href="#inspiration">Inspiration</a>
 </p>
 
 ## Key Features
